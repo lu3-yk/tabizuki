@@ -1,24 +1,50 @@
-# README
+# tabizuki✈︎
+## サイト概要
+行きたい場所を都道府県ごとで管理できるサイトです。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+特徴①　〜行きたい場所を管理できる〜  
+・都道府県カテゴリーの中から対象のエリアを選択し、写真（スポットやご飯屋さんなど）と詳細文を添えて投稿することで、行きたい場所を忘れずに管理することができます。  
+・都道府県ごとに分けているため、整理でき見返しやすいようにしております。  
 
-Things you may want to cover:
+特徴②　〜旅好きの人々と繋がれる〜  
+・他のユーザの投稿も閲覧することができるため、旅行先などの参考にすることができます。  
+・コメント機能を使ってユーザー同士で情報共有して繋がることができます。
 
-* Ruby version
+tabizukiを利用することで楽しい旅行計画の役に立ったり、行きたい場所を沢山増やしてワクワクしたり、旅好きの皆さんで様々な場所を共有し繋がりあえることができたら幸いです。  
 
-* System dependencies
+### 【サイトテーマ】
+行きたい場所を都道府県ごとで管理できるSNSサイト
 
-* Configuration
+### 【テーマを選んだ理由】
+現在、コロナ禍で思うように旅行ができないと思います。私自身、旅行が大好きで行きたいところが沢山あります。しかし、時間が経つと行きたいところが何県のどこにあったか思い出せないことが多々あります。たとえば、長崎県に行きたい場所はあったんだけど、長崎県のどこに行きたかったのかが思い出せないなどです。そこで旅行好きの皆さんが行きたい場所を投稿しまとめておくことで、コロナが終息した際にサイトを見ながら、行きたい場所に沢山訪れることができたらいいなと思いました。<br>
+また、旅行好きの皆さんでコメントし合い情報共有できれば楽しみも広がると感じこのサイトを作りたいと思いました。
 
-* Database creation
+### 【ターゲットユーザ】
+- 行きたい場所を管理しておきたい人
+- 全国の様々なスポットの情報を共有したい人
+- 旅行が好きな２０代から５０代くらいまでの人
+- より多くの場所に訪れたい人
+- 新型コロナウイルス流行により思うように旅行の予定が組めなくなった人
+### 【主な利用シーン】
+<投稿>
+行きたい場所を見つけ覚えておきたい時
 
-* Database initialization
+<閲覧>
+行きたい場所を探す時・全国にどんな場所があるのか見たい時など
 
-* How to run the test suite
+<コメント>
+情報共有をしたい時・旅好きの方々と繋がりたい時など
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+## 設計書
+・ER図![tabizuki drawio](https://user-images.githubusercontent.com/106656539/182521117-f90b50e0-4662-460b-ae05-ef147a5e399c.png)<br>
+・[テーブル定義書](https://docs.google.com/spreadsheets/d/1UC2u-qosewQDyae69rTYNQtA-eUjlb6oKlf5rIkzgLM/edit?usp=sharing)
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* ...
+## 使用素材
+- 使用検討中です。
