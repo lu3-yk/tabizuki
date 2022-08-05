@@ -1,2 +1,12 @@
-<h1>Public::Tweets#new</h1>
-<p>Find me in app/views/public/tweets/new.html.erb</p>
+<h1>新規投稿</h1>
+  <%= form_with model: @tweet do |f| %>
+    <h4>いきたい場所の写真</h4>
+      <%= f.file_field :image %>
+    <h4>行きたい場所</h4>
+      <%= f.text_field :title %>
+    <h4>詳細</h4>
+      <%= f.text_area :body %>
+    <h4>ジャンル</h4>
+    <%= f.submit '投稿' %>
+  <% end %>
+
