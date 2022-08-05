@@ -1,0 +1,63 @@
+<header class="shadow-sm">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+
+        <% if user_signed_in? %>
+        <!--会員サインイン済み  -->
+          <nav class="nav navbar-nav text-white mt-1 mr-5">
+            <span class="customer-name text-muted">
+              ようこそ、<%= current_user.name %>さん
+            </span>
+          </nav>
+          <li class="nav-item">
+            <%= link_to "投稿一覧",  tweets_path, class: 'nav-link text-dark' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'マイページ', user_path(current_user.id), class: 'nav-link text-dark' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to '新規投稿', new_tweet_path, class: 'nav-link text-dark' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
+          </li>
+
+        <% elsif admin_signed_in? %>
+        <!--管理者ログイン済み  -->
+          <nav class="nav navbar-nav text-white mt-1 mr-5">
+            <!--<span class="customer-name text-muted">-->
+            <!--  <%#= current_admin.name %>さんがログイン中です。-->
+            <!--</span>-->
+          </nav>
+          <li class="nav-item">
+            <%= link_to "会員一覧",  admin_users_path, class: 'nav-link text-dark' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' %>
+          </li>
+        <% else %>
+        <!--会員サインイン前-->
+          <li class="nav-item">
+            <%= link_to "HOME", root_path, class: 'nav-link text-dark' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "ABOUT", homes_about_path, class: 'nav-link text-dark' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-dark' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-dark' %>
+          </li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
