@@ -1,4 +1,5 @@
 class Public::TweetsController < ApplicationController
+  before_action :authenticate_user!
   def new
   end
 
@@ -6,6 +7,7 @@ class Public::TweetsController < ApplicationController
   end
 
   def index
+    @user = current_user
   end
 
   def show
