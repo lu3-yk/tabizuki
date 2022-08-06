@@ -1,0 +1,17 @@
+<div>
+  <p>コメント件数：<%= tweet.comments.count %></p>
+  <% tweet.comments.each do |comment| %>
+    <p><%= image_tag comment.user.get_profile_image(50,50), class: "user-icon" %></p>
+    <%= comment.user.name %>
+    <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
+    <% if comment.user == current_user %>
+      <%= link_to "削除", tweet_comment_path(comment.tweet, comment), method: :delete %>
+    <% end %>
+  <% end %>
+</div>
+<div>
+  <%= form_with model: [tweet, comment] do |f| %>
+    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+    <%= f.submit "送信する" %>
+  <% end %>
+</div>

@@ -20,8 +20,6 @@
                 <%= tweet.user.name %>
               <% end %>
             </td>
-            <!--#プロフィール画像後から追加する＆ユーザ名呼び出せない-->
-
             <td>
               <%= link_to tweet_path(tweet.id) do %>
                  <%= image_tag tweet.get_image(500, 500) %>
@@ -33,6 +31,7 @@
               <% if tweet.user == current_user %>
                 <%= link_to "編集", edit_tweet_path(tweet) %>
                 <%= link_to "削除", tweet_path(tweet), method: :delete %>
+                <p><%= link_to "#{tweet.comments.count} コメント", tweet_path(tweet.id) %></p>
               <% end %>
             </td>
           </tr>
