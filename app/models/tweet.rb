@@ -8,7 +8,7 @@ class Tweet < ApplicationRecord
       file_path = Rails.root.join('app/assets/images/no_img.png')
       image.attach(io: File.open(file_path), filename: 'default-image.png', content_type: 'image/jpeg')
     end
-    image.variant(resize_to_limit: [width, height]).processed
+    image.variant( resize: "#{width}x#{height}^", gravity: "center", crop: "#{width}x#{height}+0+0" )
   end
 
 end
