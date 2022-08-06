@@ -1,9 +1,6 @@
-<div class="container">
+<div class="container px-5 px-sm-0">
   <div class= "row">
-    <div class="col-md-1">
-      <%= render "public/users/info",user:@user %>
-    </div>
-    <div class="col-md-11">
+    <div class="col-sm-12">
       <h1>投稿一覧</h1>
       <table class="table table-hover table-inverse">
         <thead>
@@ -17,11 +14,25 @@
         <tbody>
         <% @tweets.each do |tweet| %>
           <tr>
-            <td><%= image_tag 'no_img.png' %></td>
+            <td>
+              <%= link_to user_path(@user.id) do %>
+                <%= image_tag 'no_img.png' %>
+              <% end %>
+            </td>
             <!--#プロフィール画像後から追加する＆ユーザ名呼び出せない-->
-            <td><%= image_tag tweet.get_image(100, 100) %></td>
+
+            <td>
+              <%= link_to tweet_path(tweet.id) do %>
+                 <%= image_tag tweet.get_image(100, 100) %>
+              <% end %>
+            </td>
             <td><%= tweet.title %></td>
-            <td><%= tweet.body %></td>
+            <td>
+              <%= tweet.body %>
+              <% if tweet.user == current_user %>
+                <%= link_to "削除", tweet_path(tweet), method: :delete %>
+              <% end %>
+            </td>
           </tr>
         <% end %>
         </tbody>

@@ -1,2 +1,18 @@
 <h1>マイページ</h1>
+<!-- ユーザーの詳細 -->
+<div>
+  <h3><%= @user.name %></h3>
+  <%= image_tag @user.get_profile_image(100,100) %>
+</div>
 
+<!-- ユーザーの投稿一覧 -->
+
+<% @tweets.each do |tweet| %>
+<div>
+  <%= link_to tweet_path(tweet.id) do %>
+    <%= image_tag tweet.get_image(100,100) %>
+  <% end %>
+  <p>いきたい場所：<%= tweet.title %></p>
+  <p>詳細：<%= tweet.body %></p>
+</div>
+<% end %>
