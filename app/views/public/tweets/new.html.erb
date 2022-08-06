@@ -3,10 +3,10 @@
     <h4>いきたい場所の写真</h4>
       <%= f.file_field :image,accept: "image/*" %>
     <h4>行きたい場所</h4>
-      <%= f.text_field :title %>
+      <%= f.text_field :title, placeholder:"〇〇市〇〇町" %>
     <h4>詳細</h4>
-      <%= f.text_area :body %>
-    <h4>ジャンル</h4>
+      <%= f.text_area :body, placeholder:"観光地名やお店の名前" %>
+    <h4>都道府県</h4>
     <%= f.submit '投稿' %>
   <% end %>
 

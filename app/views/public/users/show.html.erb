@@ -1,18 +1,42 @@
-<h1>マイページ</h1>
-<!-- ユーザーの詳細 -->
-<div>
-  <h3><%= @user.name %></h3>
-  <%= image_tag @user.get_profile_image(100,100) %>
-</div>
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-3">
+      <!-- ユーザーの詳細 -->
 
-<!-- ユーザーの投稿一覧 -->
+      <table>
+        <tr>
+          <td colspan="４">
+            <%= image_tag @user.get_profile_image(150,150), class: "user-icon-mypage" %>
+          </td>
+          <td></td>
+          <td><%= @user.name %></td>
+          <td><%= @user.introduction %></td>
+        </tr>
+        <tr>
+          <td>いいねした投稿</td>
+          <td>フォロー</td>
+          <td>フォロワー</td>
+        </tr>
+        <tr>
+          <td>
+            <%= link_to edit_user_path(current_user.id) do %>
+              プロフィール編集<i class="fas fa-cog"></i>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    </div>
 
-<% @tweets.each do |tweet| %>
-<div>
-  <%= link_to tweet_path(tweet.id) do %>
-    <%= image_tag tweet.get_image(100,100) %>
-  <% end %>
-  <p>いきたい場所：<%= tweet.title %></p>
-  <p>詳細：<%= tweet.body %></p>
+    <!-- ユーザーの投稿一覧 -->
+    <div class="d-flex align-content-around flex-wrap col-9">
+      <% @tweets.each do |tweet| %>
+        <div>
+          <%= link_to tweet_path(tweet.id) do %>
+            <%= image_tag tweet.get_image(300,300) %>
+          <% end %>
+          <p>都道府県</p>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
-<% end %>

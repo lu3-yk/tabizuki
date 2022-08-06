@@ -3,6 +3,7 @@
     <div class="container">
       <a class="navbar-brand" href="/"><span>tabizuki</span></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -10,6 +11,13 @@
 
         <% if user_signed_in? %>
         <!--会員サインイン済み  -->
+        <div>
+          ようこそ、<%= current_user.name %>さん<br>
+            <%= image_tag current_user.get_profile_image(50,50), class: "user-icon" %>
+            <%= link_to user_path(current_user.id) do %>
+              マイページ<i class="fas fa-user"></i>
+            <% end %>
+          </div>
           <li class="nav-item">
             <%= link_to "投稿一覧",  tweets_path, class: 'nav-link text-dark' %>
           </li>
@@ -19,17 +27,6 @@
           <li class="nav-item">
             <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
           </li>
-          <div>
-           ようこそ、<%= current_user.name %>さん
-          <div>
-            <%= image_tag current_user.get_profile_image(70,70), class: "rounded-circle" %>
-            <%= link_to user_path(current_user.id) do %>
-              マイページ<i class="fas fa-user"></i>
-            <% end %>
-            <%= link_to edit_user_path(current_user.id) do %>
-              プロフィール編集<i class="fas fa-cog"></i>
-            <% end %>
-          </div>
           </div>
 
         <% elsif admin_signed_in? %>

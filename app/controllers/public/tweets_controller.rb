@@ -13,11 +13,11 @@ class Public::TweetsController < ApplicationController
   end
 
   def index
-    @user = current_user
     @tweets = Tweet.all
   end
 
   def show
+    @tweet = Tweet.find(params[:id])
   end
 
   def edit

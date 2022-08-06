@@ -6,7 +6,7 @@
         <thead>
           <tr>
             <th></th>
-            <th></th>
+            <th>行きたい場所の写真</th>
             <th>行きたい場所</th>
             <th>詳細</th>
           </tr>
@@ -15,15 +15,16 @@
         <% @tweets.each do |tweet| %>
           <tr>
             <td>
-              <%= link_to user_path(@user.id) do %>
-                <%= image_tag 'no_img.png' %>
+              <%= link_to user_path(tweet.user.id) do %>
+                <%= image_tag tweet.user.get_profile_image(50,50), class: "user-icon" %><br>
+                <%= tweet.user.name %>
               <% end %>
             </td>
             <!--#プロフィール画像後から追加する＆ユーザ名呼び出せない-->
 
             <td>
               <%= link_to tweet_path(tweet.id) do %>
-                 <%= image_tag tweet.get_image(100, 100) %>
+                 <%= image_tag tweet.get_image(500, 500) %>
               <% end %>
             </td>
             <td><%= tweet.title %></td>
