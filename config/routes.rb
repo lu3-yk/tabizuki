@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
 # ログイン関係
   # URL /user/sign_in ...
   devise_for :user,skip: [:passwords], controllers: {
@@ -17,13 +17,15 @@ Rails.application.routes.draw do
    root :to =>"homes#top"
    get "homes/about"=>"homes#about"
    resources :users
-   resources :tweets
+   resources :tweets do
+     resources :comments,only: [:create, :destroy]
+   end
   end
 
-#管理者関係  
+#管理者関係
   namespace :admin do
     resources :users
   end
-  
+
 
 end

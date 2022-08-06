@@ -1,6 +1,8 @@
 class Tweet < ApplicationRecord
   has_one_attached :image
   belongs_to :user
+  has_many :comments, dependent: :destroy
+  
 
 
   def get_image(width, height)
@@ -8,7 +10,7 @@ class Tweet < ApplicationRecord
       file_path = Rails.root.join('app/assets/images/no_img.png')
       image.attach(io: File.open(file_path), filename: 'default-image.png', content_type: 'image/jpeg')
     end
-    image.variant( resize: "#{width}x#{height}^", gravity: "center", crop: "#{width}x#{height}+0+0" )
+    image.variant(resize_to_fill: [width, height]).processed
   end
 
 end

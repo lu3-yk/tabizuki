@@ -38,7 +38,7 @@ class Public::TweetsController < ApplicationController
   end
 
   private
-  # ストロングパラメータ
+
   def tweet_params
     params.require(:tweet).permit(:title, :body, :image)
   end
