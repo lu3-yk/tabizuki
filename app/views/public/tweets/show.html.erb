@@ -7,7 +7,9 @@
 <%= @tweet.body %>
 <% if @tweet.user == current_user %>
   <%= link_to "編集", edit_tweet_path(@tweet) %>
-  <%= link_to "削除", user_path(@tweet.user.id), method: :delete %>
+  <%= link_to "削除", tweet_path(@tweet), method: :delete %>
 <% end %>
-
+<!--いいね機能-->
+<%= render "public/likes/likes", tweet: @tweet %>
+<!--コメント機能-->
 <%= render "public/comments/comment", tweet: @tweet,comment: @comment %>

@@ -35,7 +35,12 @@ class Public::TweetsController < ApplicationController
   def destroy
     @tweet = Tweet.find(params[:id])
     @tweet.destroy
-    redirect_to tweets_path
+    # 遷移前のURLがtweetの詳細pageの場合
+    if request.referer.include?("/tweets/#{@tweet.id}")
+      redirect_to user_path(current_user.id)
+    else
+      redirect_to tweets_path
+    end
   end
 
   private

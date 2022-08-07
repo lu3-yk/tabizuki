@@ -9,6 +9,7 @@
             <th>行きたい場所の写真</th>
             <th>行きたい場所</th>
             <th>詳細</th>
+            <th colspan=2></th>
           </tr>
         </thead>
         <tbody>
@@ -28,10 +29,15 @@
             <td><%= tweet.title %></td>
             <td>
               <%= tweet.body %>
+            </td>
+            <td>
+              <%= link_to "💬#{tweet.comments.count} ", tweet_path(tweet.id) %>
+              <%= render "public/likes/likes", tweet: tweet %>
+            </td>
+            <td>
               <% if tweet.user == current_user %>
                 <%= link_to "編集", edit_tweet_path(tweet) %>
                 <%= link_to "削除", tweet_path(tweet), method: :delete %>
-                <p><%= link_to "#{tweet.comments.count} コメント", tweet_path(tweet.id) %></p>
               <% end %>
             </td>
           </tr>
