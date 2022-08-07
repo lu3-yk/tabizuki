@@ -35,8 +35,12 @@
             <%= image_tag tweet.get_image(300,300) %>
           <% end %>
           <p>都道府県</p>
+
             <%= link_to "💬 #{tweet.comments.count} ", tweet_path(tweet.id) %>
-            <%= render "public/likes/likes", tweet: tweet %>
+            <!--いいね機能-->
+            <div id = "like_btn_<%= tweet.id %>">
+              <%= render "public/likes/likes", tweet: tweet %>
+            </div>
         </div>
       <% end %>
     </div>
