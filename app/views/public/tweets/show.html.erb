@@ -14,4 +14,6 @@
   <%= render "public/likes/likes", tweet: @tweet %>
 </div>
 <!--コメント機能-->
-<%= render "public/comments/comment", tweet: @tweet,comment: @comment %>
+<div id="comment_area">
+  <%= render "public/comments/comment", tweet: @tweet,comment: @comment %>
+</div>

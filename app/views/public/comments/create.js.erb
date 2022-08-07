@@ -1,0 +1,2 @@
+$('#comment_area').html("<%= j(render partial: 'public/comments/comment', locals: {tweet: @tweet,comment: @comment}) %>");
+$("textarea").val('')
