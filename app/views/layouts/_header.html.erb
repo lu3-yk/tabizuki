@@ -13,8 +13,8 @@
         <!--会員サインイン済み  -->
         <div>
           ようこそ、<%= current_user.name %>さん<br>
-            <%= image_tag current_user.get_profile_image(50,50), class: "user-icon" %>
             <%= link_to user_path(current_user.id) do %>
+            <%= image_tag current_user.get_profile_image(50,50), class: "user-icon" %>
               マイページ<i class="fas fa-user"></i>
             <% end %>
           </div>

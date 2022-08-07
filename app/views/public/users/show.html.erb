@@ -2,23 +2,26 @@
   <div class="row mt-5">
     <div class="col-3">
       <!-- ユーザーの詳細 -->
-
       <table>
         <tr>
-          <td colspan="４">
+          <td colspan=2>
             <%= image_tag @user.get_profile_image(150,150), class: "user-icon-mypage" %>
           </td>
-          <td></td>
-          <td><%= @user.name %></td>
-          <td><%= @user.introduction %></td>
+        <tr>
+          <td colspan=2><%= @user.name %></td>
         </tr>
         <tr>
-          <td>いいねした投稿</td>
+          <td colspan=2><%= @user.introduction %></td>
+        </tr>
+        <tr>
           <td>フォロー</td>
           <td>フォロワー</td>
         </tr>
+        <tr colspan=2>
+          <td>いいねした投稿</td>
+        </tr>
         <tr>
-          <td>
+          <td colspan=2>
             <%= link_to edit_user_path(current_user.id) do %>
               プロフィール編集<i class="fas fa-cog"></i>
             <% end %>

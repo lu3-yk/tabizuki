@@ -1,12 +1,17 @@
 <h1>新規投稿</h1>
   <%= form_with model: @tweet do |f| %>
-    <h4>行きたい場所の写真</h4>
-      <%= f.file_field :image,accept: "image/*" %>
-    <h4>行きたい場所</h4>
-      <%= f.text_field :title, placeholder:"〇〇市〇〇町" %>
-    <h4>詳細</h4>
-      <%= f.text_area :body, placeholder:"観光地名やお店の名前" %>
-    <h4>都道府県</h4>
+    <%= f.label :行きたい場所の写真 %>
+    <%= f.file_field :image,accept: "image/*" %>
+
+    <%= f.label :場所の詳細 %>
+    <%= f.text_field :title, placeholder:"〇〇市〇〇町" %>
+
+    <%= f.label :コメント %>
+    <%= f.text_area :body, placeholder:"観光地名やお店の名前　/　魅力ポイントなど" %>
+
+    <%= f.label :都道府県 %>
+    <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, { prompt: '選択してください' } %>
+    
     <%= f.submit '投稿' %>
   <% end %>
 

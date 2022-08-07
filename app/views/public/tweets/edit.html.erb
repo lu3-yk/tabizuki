@@ -1,13 +1,22 @@
 <h1>投稿を編集</h1>
+
 <div>
   <%= image_tag @tweet.user.get_profile_image(50,50), class: "user-icon" %>
   <%= @tweet.user.name %>
   <%= image_tag @tweet.get_image(500, 500) %>
 </div>
+
 <%= form_with model: @tweet do |f| %>
-  <label>行きたい場所を編集</label>
-    <%= f.text_field :title, autofocus: true %>
-  <label>詳細を編集</label>
-    <%= f.text_area :body %>
-    <%= f.submit "変更を保存" %>
+
+  <%= f.label :行きたい場所を編集 %>
+  <%= f.text_field :title, autofocus: true %>
+
+  <%= f.label :詳細を編集 %>
+  <%= f.text_area :body %>
+
+  <%= f.label :都道府県を編集 %>
+  <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, { prompt: '選択してください' } %>
+
+  <%= f.submit "編集を保存" %>
+
 <% end %>
