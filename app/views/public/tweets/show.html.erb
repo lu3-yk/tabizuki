@@ -12,7 +12,7 @@
   <%= link_to "削除", tweet_path(@tweet), method: :delete %>
 <% end %>
 <!--いいね機能-->
-<div id = "like_btn_<%= @tweet.id %>">
+<div id="like_btn_<%= @tweet.id %>">
   <%= render "public/likes/likes", tweet: @tweet %>
 </div>
 <!--コメント機能-->

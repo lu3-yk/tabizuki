@@ -15,7 +15,10 @@ Rails.application.routes.draw do
 #会員関係
   scope module: :public do
    root :to =>"homes#top"
-   resources :users
+   resources :users do
+    get :follows, :followers, on: :member
+    resource :relationships, only: [:create, :destroy]
+  end
    resources :tweets do
      resources :comments,only: [:create, :destroy]
      resource :likes,only:[:create, :destroy]

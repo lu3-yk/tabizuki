@@ -5,6 +5,10 @@ class User < ApplicationRecord
   has_many :tweets,   dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes,    dependent: :destroy
+  has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+  has_many :following_user, through: :follower, source: :followed # 自分がフォローしている人
+  has_many :follower_user, through: :followed, source: :follower # 自分をフォローしている人
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
@@ -13,6 +17,20 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { maximum: 20, minimum: 2 }
   validates :email, presence: true
   validates :introduction, length: { maximum: 100 }
+  
+  #フォローする
+  def follow(user_id)
+    follower.create(followed_id: user_id)
+  end
+  #フォローはずす
+  def unfollow(user_id)
+    follower.find_by(followed_id: user_id).destroy
+  end
+  #フォローしていればtrueを返す
+  def following?(user)
+    following_user.include?(user)
+  end
+
 
 
   def get_profile_image(width, height)

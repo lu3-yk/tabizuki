@@ -22,8 +22,10 @@
         </tr>
         <tr>
           <td colspan=2>
-            <%= link_to edit_user_path(current_user.id) do %>
-              プロフィール編集<i class="fas fa-cog"></i>
+            <% if user_signed_in? && @user == current_user %>
+              <%= link_to edit_user_path(current_user.id) do %>
+                プロフィール編集<i class="fas fa-cog"></i>
+              <% end %>
             <% end %>
           </td>
         </tr>
@@ -48,4 +50,17 @@
       <% end %>
     </div>
   </div>
+<!--フォローボタン  -->
+<div>
+  <%= render "public/relationships/follow_btn", user: @user %>
 </div>
+
+   <div>
+     <%= link_to follows_user_path(@user) do %>
+     <h6>フォロー<%= @following_users.count %></h6>
+     <% end %>&nbsp;&nbsp;
+     <%= link_to followers_user_path(@user) do %>
+     <h6>フォロワー<%= @follower_users.count %></h6>
+     <% end %>
+   </div>
+
