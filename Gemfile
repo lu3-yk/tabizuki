@@ -57,7 +57,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
 gem 'jquery-rails'
-
+gem 'rails-i18n'
+gem 'devise-i18n-views', '~> 0.3.7'
 
 gem 'net-smtp'
 gem 'net-imap'
