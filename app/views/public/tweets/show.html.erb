@@ -1,6 +1,8 @@
 <div>
-  <%= image_tag @tweet.user.get_profile_image(50,50), class: "user-icon" %>
-  <%= @tweet.user.name %>
+  <%= link_to user_path(@tweet.user.id) do %>
+   <%= image_tag @tweet.user.get_profile_image(50,50), class: "user-icon" %>
+   <%= @tweet.user.name %>
+  <% end %>
   <%= image_tag @tweet.get_image(550, 550) %>
 </div>
 <%= @tweet.title %><br>

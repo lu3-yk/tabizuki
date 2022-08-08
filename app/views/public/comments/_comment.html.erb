@@ -1,8 +1,10 @@
 <div>
   <p>コメント件数：<%= tweet.comments.count %></p>
   <% tweet.comments.each do |comment| %>
-    <p><%= image_tag comment.user.get_profile_image(50,50), class: "user-icon" %></p>
-    <%= comment.user.name %>
+    <%= link_to user_path(comment.user.id) do %>
+      <%= image_tag comment.user.get_profile_image(50,50), class: "user-icon" %>
+      <%= comment.user.name %>
+    <% end %>
     <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
     <% if comment.user == current_user %>
       <%= link_to "削除", tweet_comment_path(comment.tweet, comment),remote: true, method: :delete %>
