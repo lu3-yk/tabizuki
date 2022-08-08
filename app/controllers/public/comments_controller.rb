@@ -1,20 +1,19 @@
 class Public::CommentsController < ApplicationController
-  before_action :authenticate_user!
 
   def create
     @tweet = Tweet.find(params[:tweet_id])
+    @comment = Comment.new
     comment = current_user.comments.new(comment_params)
     comment.tweet_id = @tweet.id
-    comment.save
-    @comment = Comment.new
-    # redirect_to tweet_path(@tweet)
+    unless comment.save
+      redirect_to tweet_path(@tweet)
+    end
   end
 
   def destroy
     Comment.find(params[:id]).destroy
     @tweet = Tweet.find(params[:tweet_id])
     @comment = Comment.new
-    # redirect_to tweet_path(params[:tweet_id])
   end
 
   private

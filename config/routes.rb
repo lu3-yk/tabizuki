@@ -15,7 +15,6 @@ Rails.application.routes.draw do
 #会員関係
   scope module: :public do
    root :to =>"homes#top"
-   get "homes/about"=>"homes#about"
    resources :users
    resources :tweets do
      resources :comments,only: [:create, :destroy]

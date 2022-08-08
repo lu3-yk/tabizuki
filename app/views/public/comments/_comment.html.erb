@@ -9,6 +9,8 @@
     <% end %>
   <% end %>
 </div>
+  <!--エラーメッセージ-->
+  <%#= render 'layouts/error_message', model: comment %>
 <div>
   <%= form_with(model: [tweet, comment],local: false) do |f| %>
     <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>

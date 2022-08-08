@@ -9,6 +9,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  #バリデーション
+  validates :name, presence: true, length: { maximum: 20, minimum: 2 }
+  validates :email, presence: true
+  validates :introduction, length: { maximum: 100 }
 
 
   def get_profile_image(width, height)
