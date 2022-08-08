@@ -1,5 +1,5 @@
 class Public::TweetsController < ApplicationController
-
+  before_action :authenticate_user!
   def new
     @tweet = Tweet.new
   end

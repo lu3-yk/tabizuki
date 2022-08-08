@@ -1,5 +1,5 @@
 class Public::CommentsController < ApplicationController
-
+  before_action :authenticate_user!
   def create
     @tweet = Tweet.find(params[:tweet_id])
     @comment = Comment.new
