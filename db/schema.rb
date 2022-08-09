@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 2022_08_05_163008) do
 
   create_table "prefectures", force: :cascade do |t|
     t.string "name", null: false
+    t.string "ancestry"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

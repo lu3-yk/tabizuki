@@ -8,7 +8,6 @@ class Tweet < ApplicationRecord
   # バリデーション
   validates :title,       presence: true, length: { maximum: 30 }
   validates :body,        presence: true, length: { maximum: 300 }
-  validates :prefecture,  presence: true
   validates :image,       presence: true
 
 

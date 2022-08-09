@@ -1,5 +1,7 @@
 class Public::TweetsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_parents, only: :index
+
   def new
     @tweet = Tweet.new
   end
@@ -16,7 +18,14 @@ class Public::TweetsController < ApplicationController
   end
 
   def index
-    @tweets = Tweet.all
+    respond_to do |format|
+      format.html do
+        @tweets = Tweet.all.order(created_at: :desc)
+      end
+      format.json do
+        @children = Prefecture.find(params[:parent_id]).children
+      end
+    end
   end
 
   def show
@@ -46,9 +55,15 @@ class Public::TweetsController < ApplicationController
     end
   end
 
-
+  def get_prefecture_children
+    @prefecture_children = Prefecture.find("#{params[:parent_id]}").children
+  end
 
   private
+
+  def set_parents
+    @parents = Prefecture.where(ancestry: nil)
+  end
 
   def tweet_params
     params.require(:tweet).permit(:title, :body, :image,:prefecture_id)

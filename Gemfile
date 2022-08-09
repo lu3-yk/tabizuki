@@ -60,6 +60,7 @@ gem 'jquery-rails'
 gem 'rails-i18n'
 gem 'devise-i18n-views', '~> 0.3.7'
 gem 'kaminari'
+gem 'ancestry'
 
 gem 'net-smtp'
 gem 'net-imap'

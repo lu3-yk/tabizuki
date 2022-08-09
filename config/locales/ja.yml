@@ -2,6 +2,7 @@ ja:
   activerecord:
     models:
       user:
+      tweet:
     attributes:
       user:
         name: 名前
@@ -9,4 +10,10 @@ ja:
         introduction: 自己紹介文
         password: パスワード
         encrypted_password: パスワード確認
-      
+      prefecture:
+        name: 都道府県名
+      tweet:
+        title: タイトル
+        body: 詳細コメント
+        prefecture: 都道府県名
+        image: 写真

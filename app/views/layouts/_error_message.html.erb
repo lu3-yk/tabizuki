@@ -1,8 +1,7 @@
 <!--エラーメッセージ-->
 <% if model.errors.any? %>
-  <div class="alert alert-danger">
-    <ul class="list-unstyled">
-      <h5><%= model.errors.count %>件のエラー</h5>
+  <div class="alert alert-warning">
+    <ul>
       <% model.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>

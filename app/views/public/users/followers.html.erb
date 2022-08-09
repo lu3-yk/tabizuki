@@ -1,28 +1,29 @@
 <% if @users.exists? %>
-  <% @users.each do |user| %>
-    <table>
-      <thead>
-        <tr>
-          <th></th>
-          <th>name</th>
-          <th>フォロー数</th>
-          <th>フォロワー数</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
+<h1>フォロワー</h1>
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th>名前</th>
+        <th>自己紹介</th>
+        <th></th>
+      </tr>
+    </thead>
+    <% @users.each do |user| %>
+    <tbody>
+      <tr>
+        <td>
             <%= link_to user_path(user.id) do %>
               <%= image_tag user.get_profile_image(50,50), class: "user-icon" %><br>
             <% end %>
-          </td>
-          <td><%= user.name %></td>
-          <td><%= user.following_user.count %></td>
-          <td><%= user.follower_user.count %></td>
-        </tr>
-      </tbody>
-    </table>
-  <% end %>
+        </td>
+        <td><%= user.name %></td>
+        <td><%= user.introduction %></td>
+        <td><%= render "public/relationships/follow_btn", user: user %></td>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>
 <% else %>
   <p>ユーザーはいません</p>
 <% end %>

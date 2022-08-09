@@ -5,16 +5,16 @@
       <%= image_tag comment.user.get_profile_image(50,50), class: "user-icon" %>
       <%= comment.user.name %>
     <% end %>
-    <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
+    <%= comment.comment %><%= comment.created_at.strftime('%Y/%m/%d') %>
     <% if comment.user == current_user %>
       <%= link_to "削除", tweet_comment_path(comment.tweet, comment),remote: true, method: :delete %>
     <% end %>
   <% end %>
 </div>
-  <!--エラーメッセージ-->
-  <%#= render 'layouts/error_message', model: comment %>
 <div>
   <%= form_with(model: [tweet, comment],local: false) do |f| %>
+    <!--エラーメッセージ-->
+    <%= render 'layouts/error_message', model: f.object %>
     <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
     <%= f.submit "送信する" %>
   <% end %>

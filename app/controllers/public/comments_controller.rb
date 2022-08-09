@@ -5,9 +5,7 @@ class Public::CommentsController < ApplicationController
     @comment = Comment.new
     comment = current_user.comments.new(comment_params)
     comment.tweet_id = @tweet.id
-    unless comment.save
-      redirect_to tweet_path(@tweet)
-    end
+    comment.save
   end
 
   def destroy

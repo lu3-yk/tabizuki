@@ -8,14 +8,14 @@
 
 <%= form_with model: @tweet do |f| %>
 
-  <%= f.label :場所の詳細を編集 %>
-  <%= f.text_field :title, autofocus: true %>
-
-  <%= f.label :コメントを編集 %>
-  <%= f.text_area :body %>
-
   <%= f.label :都道府県を編集 %>
   <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, { prompt: '選択してください' } %>
+
+  <%= f.label :タイトルを編集 %>
+  <%= f.text_field :title, autofocus: true %>
+
+  <%= f.label :詳細コメントを編集 %>
+  <%= f.text_area :body %>
 
   <%= f.submit "編集を保存" %>
 

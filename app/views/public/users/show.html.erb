@@ -7,18 +7,30 @@
           <td colspan=2>
             <%= image_tag @user.get_profile_image(150,150), class: "user-icon-mypage" %>
           </td>
-        <tr>
+        <tr class="h3">
           <td colspan=2><%= @user.name %></td>
         </tr>
         <tr>
           <td colspan=2><%= @user.introduction %></td>
         </tr>
         <tr>
-          <td>フォロー</td>
-          <td>フォロワー</td>
+          <td>
+           <%= link_to follows_user_path(@user) do %>
+            フォロー<%= @following_users.count %>
+           <% end %>
+          </td>
+          <td>
+           <%= link_to followers_user_path(@user) do %>
+             フォロワー<%= @follower_users.count %>
+           <% end %>
+          </td>
         </tr>
         <tr colspan=2>
-          <td>いいねした投稿</td>
+          <td>
+            <%= link_to likes_user_path(@user) do %>
+              <i class="fas fa-grin-hearts fa-2x"></i>をした投稿一覧
+            <% end %>
+          </td>
         </tr>
         <tr>
           <td colspan=2>
@@ -27,6 +39,9 @@
                 プロフィール編集<i class="fas fa-cog"></i>
               <% end %>
             <% end %>
+            <!--フォローボタン  -->
+            <%= render "public/relationships/follow_btn", user: @user %>
+
           </td>
         </tr>
       </table>
@@ -35,32 +50,26 @@
     <!-- ユーザーの投稿一覧 -->
     <div class="d-flex align-content-around flex-wrap col-9">
       <% @tweets.each do |tweet| %>
-        <div>
-          <%= link_to tweet_path(tweet.id) do %>
-            <%= image_tag tweet.get_image(300,300) %>
-          <% end %>
-          <p>都道府県</p>
-
-            <%= link_to "💬 #{tweet.comments.count} ", tweet_path(tweet.id) %>
-            <!--いいね機能-->
-            <div id = "like_btn_<%= tweet.id %>">
-              <%= render "public/likes/likes", tweet: tweet %>
-            </div>
+        <div class="card" style="width: 18rem;">
+          <div class="bd-placeholder-img card-img-top" width="100%" height="180" preserveAspectRatio="xMidYMid slice" focusable="false" role="img">
+              <%= link_to tweet_path(tweet.id) do %>
+                <%= image_tag tweet.get_image(280,280) %>
+              <% end %>
+          </div>
+          <div class="card-body d-flex align-items-center ">
+              <%= tweet.prefecture.name %>　
+              <!--いいね機能-->
+              <div id = "like_btn_<%= tweet.id %>">
+                <%= render "public/likes/likes", tweet: tweet %>
+              </div>　
+              <!--コメント機能-->
+              <%= link_to tweet_path(tweet.id) do %>
+                <i class="far fa-comment fa-2x"></i><%= tweet.comments.count %>
+              <% end %>　　
+              <%= link_to "詳細", tweet_path(tweet.id) %>
+          </div>
         </div>
       <% end %>
     </div>
   </div>
-<!--フォローボタン  -->
-<div>
-  <%= render "public/relationships/follow_btn", user: @user %>
-</div>
-
-   <div>
-     <%= link_to follows_user_path(@user) do %>
-     <h6>フォロー<%= @following_users.count %></h6>
-     <% end %>&nbsp;&nbsp;
-     <%= link_to followers_user_path(@user) do %>
-     <h6>フォロワー<%= @follower_users.count %></h6>
-     <% end %>
-   </div>
 

@@ -1,13 +1,9 @@
 <% if tweet.liked_by?(current_user) %>
-  <p>
     <%= link_to tweet_likes_path(tweet), method: :delete, remote: true do %>
-      ♥<%= tweet.likes.count %>
+      <i class="fas fa-grin-hearts fa-2x"></i><%= tweet.likes.count %>
     <% end %>
-  </p>
 <% else %>
-  <p>
     <%= link_to tweet_likes_path(tweet), method: :post, remote: true do %>
-      ♡<%= tweet.likes.count %>
+      <i class="far fa-smile fa-2x"></i><%= tweet.likes.count %>
     <% end %>
-  </p>
 <% end %>
