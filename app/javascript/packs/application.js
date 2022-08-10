@@ -15,6 +15,7 @@ import "../stylesheets/application"
 import '@fortawesome/fontawesome-free/js/all'
 
 import './prefecture'
+import './category'
 
 Rails.start()
 Turbolinks.start()

@@ -47,6 +47,8 @@
       </table>
     </div>
 
+
+
     <!-- ユーザーの投稿一覧 -->
     <div class="d-flex align-content-around flex-wrap col-9">
       <% @tweets.each do |tweet| %>
@@ -57,15 +59,15 @@
               <% end %>
           </div>
           <div class="card-body d-flex align-items-center ">
-              <%= tweet.prefecture.name %>　
+              <%= tweet.prefecture.name %>
               <!--いいね機能-->
               <div id = "like_btn_<%= tweet.id %>">
                 <%= render "public/likes/likes", tweet: tweet %>
-              </div>　
+              </div>
               <!--コメント機能-->
               <%= link_to tweet_path(tweet.id) do %>
                 <i class="far fa-comment fa-2x"></i><%= tweet.comments.count %>
-              <% end %>　　
+              <% end %>
               <%= link_to "詳細", tweet_path(tweet.id) %>
           </div>
         </div>
@@ -73,3 +75,28 @@
     </div>
   </div>
 
+
+  <div data-user-id=<%= @user.id %> id="user-id"></div>
+  <div class= "row">
+    <div class="col-lg-4">
+      <div class="item-categories">
+      <h2>
+        都道府県一覧
+      </h2>
+      <%= link_to  user_path(@user.id), class: "prefecture-button", id: 'categoBtn' do %>
+        都道府県から探す
+      <% end %>
+      <div id="tree_menu">
+        <ul class="prefectureTree">
+          <% @parents.each do |parent| %>
+            <li class="prefecture_parent">
+              <%= link_to search_tweet_path(parent) do %>
+                <input type="button" value="<%= parent.name %>" name="<%= parent.id %>" class="parent_btn">
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+        <ul class="prefectureTree-child">
+        </ul>
+      </div>
+    </div>

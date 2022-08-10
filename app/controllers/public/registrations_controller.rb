@@ -39,7 +39,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # end
 
   def after_sign_up_path_for(resource)
-      tweets_path(resource)
+      tweets_path
   end
 
 

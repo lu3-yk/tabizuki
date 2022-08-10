@@ -14,8 +14,10 @@
         <%= link_to user_path(current_user.id) do %>
           <i class="fas fa-user"></i>
         <% end %>
-        <%= link_to edit_user_path(current_user.id) do %>
-          <i class="fas fa-cog"></i>
+        <% if user.name != "guestuser" %>
+          <%= link_to edit_user_path(current_user.id) do %>
+            <i class="fas fa-cog"></i>
+          <% end %>
         <% end %>
       </td>
     </tr>

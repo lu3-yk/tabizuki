@@ -1,0 +1,11 @@
+<%= "#{@prefecture.name}の一覧" %>
+
+
+<ul>
+  <% @tweets.each do |tweet| %>
+    <li>
+      <%= tweet.title %><br>
+      <%= tweet.body %>
+    </li>
+  <% end %>
+</ul>

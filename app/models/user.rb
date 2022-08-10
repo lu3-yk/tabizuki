@@ -17,7 +17,7 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { maximum: 20, minimum: 2 }
   validates :email, presence: true
   validates :introduction, length: { maximum: 100 }
-  
+
   #フォローする
   def follow(user_id)
     follower.create(followed_id: user_id)
@@ -31,7 +31,13 @@ class User < ApplicationRecord
     following_user.include?(user)
   end
 
-
+  #ゲストログイン
+  def self.guest
+    find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "guestuser"
+    end
+  end
 
   def get_profile_image(width, height)
     unless profile_image.attached?

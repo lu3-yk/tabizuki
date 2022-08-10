@@ -13,8 +13,8 @@
             <th>氏名</th>
             <th>メールアドレス</th>
             <th>投稿数</th>
-            <th></th>
             <th>ステータス</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -37,14 +37,16 @@
               <%= user.tweets.count %>
             </td>
             <td>
-              <%= link_to "編集",edit_admin_user_path(user.id) %>
-            </td>
-            <td>
               <% if user.is_deleted %>
               <span style="color:red">退会</span>
               <% else %>
               <span style="color:green">有効</span>
               <% end %>
+            </td>
+            <td>
+              <!--<%# if current_user.admin? signed_in? %>-->
+                <%= link_to "編集",edit_admin_user_path(user.id) %>
+              <!--<#% end %>-->
             </td>
           </tr>
         <% end %>

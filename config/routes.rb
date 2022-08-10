@@ -11,22 +11,25 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
+  
+    devise_scope :public do
+      post 'public/users/guest_sign_in', to: 'public/users/sessions#guest_sign_in'
+    end
 
 #会員関係
   scope module: :public do
    root :to =>"homes#top"
+    get '/users/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
+    patch '/users/withdrawal' => 'users#withdrawal', as: 'withdrawal'
    resources :users do
-    # 退会確認画面
-    get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
-    # 論理削除用のルーティング
-    patch '/users/:id/withdrawal' => 'users#withdrawal', as: 'withdrawal'
-    get "likes", on: :member
+    get 'likes', on: :member
     get :follows, :followers, on: :member
     resource :relationships, only: [:create, :destroy]
-  end
+   end
    resources :tweets do
      resources :comments,only: [:create, :destroy]
      resource :likes,only:[:create, :destroy]
+     get 'search', on: :member
      collection do
        get 'get_prefecture_children', defaults: { format: 'json' }
      end

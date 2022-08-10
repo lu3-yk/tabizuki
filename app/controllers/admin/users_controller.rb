@@ -12,11 +12,18 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
     @tweets = @user.tweets.order(created_at: :desc)
   end
-  
-  def unsubscribe
-    @customer = current_customer
+
+  def update
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    redirect_to admin_user_path(@user)
   end
-  
+
+
+  def unsubscribe
+    @user = current_user
+  end
+
   def withdrawal
     @user = User.find(params[:id])
     @user.update(is_deleted: true)
@@ -24,5 +31,11 @@ class Admin::UsersController < ApplicationController
     flash[:notice] = "退会処理を実行いたしました"
     redirect_to root_path
   end
-  
+
+  private
+
+  def user_params
+    params.require(:user).permit(:name,:email,:introduction)
+  end
+
 end

@@ -1,10 +1,37 @@
-<h1>プロフィールを編集</h1>
-<%= form_with model: @user do |f| %>
-  <label>名前</label>
-    <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%>
-  <label>プロフェール写真を変更</label>
-    <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %>
-  <label>自己紹介文を変更</label>
-    <%= f.text_area :introduction %>
-    <%= f.submit "変更を保存" %>
-<% end %>
+<div class="container">
+  <div class="row mt-5">
+    <div class="col">
+      <h1 class="text-center">プロフィールを編集</h1>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="mx-auto">
+      <%= form_with model: @user do |f| %>
+        <table class="table table-borderless">
+          <tr>
+            <th>プロフェール写真を変更</th>
+            <td><%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %></td>
+          </tr>
+          <tr>
+            <th>名前</th>
+            <td><%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%></td>
+          </tr>
+          <tr>
+            <th>メールアドレスを変更</th>
+            <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+          </tr>
+          <tr>
+            <th>自己紹介文を変更</th>
+            <td><%= f.text_area :introduction,size: "30x5" %></td>
+          </tr>
+        </table>
+        <div class="text-center">
+          <%= f.submit "変更を保存" %>
+        </div>
+      <% end %>
+      <div class="text-center mt-5">
+        <%= link_to "退会したい方はこちら", unsubscribe_path, class: "btn btn-outline-danger" %>
+      </div>
+    </div>
+  </div>
+</div>

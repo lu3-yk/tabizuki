@@ -1,8 +1,8 @@
 ja:
   activerecord:
     models:
-      user:
-      tweet:
+      user: ユーザー
+      tweet: 投稿
     attributes:
       user:
         name: 名前

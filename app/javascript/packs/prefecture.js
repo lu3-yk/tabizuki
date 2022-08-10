@@ -1,4 +1,5 @@
-$(document).ready(function () {
+$(document).on('turbolinks:load', function() {
+  // 処理内容
   // 親カテゴリーを表示
   $('#categoBtn').hover(function (e) {
     e.preventDefault();
@@ -6,31 +7,25 @@ $(document).ready(function () {
     $('#tree_menu').show();
     $('.prefectureTree').show();
   }, function () {
-    // あえて何も記述しない
+ 
   });
 
   // 非同期にてヘッダーのカテゴリーを表示
   function childBuild(children) {
+    var searchPath = `/tweets/${children.id}/search`
+    var element = document.getElementById('user-id')
+    if (element) {
+      searchPath = searchPath + "?user_id=" + element.dataset.userId
+    }
+
     let child_prefecture = `
                         <li class="prefecture_child">
-                          <a href="/tweets/${children.id}/search"><input class="child_btn" type="button" value="${children.name}" name= "${children.id}">
+                          <a href="${searchPath}"><input class="child_btn" type="button" value="${children.name}" name= "${children.id}">
                           </a>
                         </li>
                         `
     return child_prefecture;
   }
-
-  // 親カテゴリーを表示
-  $('#categoBtn').hover(function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-    timeOut = setTimeout(function () {
-      $('#tree_menu').show();
-      $('.prefectureTree').show();
-    }, 500)
-  }, function () {
-    clearTimeout(timeOut)
-  });
 
   // 子カテゴリーを表示
   $('.parent_btn').hover(function () {

@@ -31,11 +31,6 @@
 
         <% elsif admin_signed_in? %>
         <!--管理者ログイン済み  -->
-          <nav class="nav navbar-nav text-white mt-1 mr-5">
-            <!--<span class="customer-name text-muted">-->
-            <!--  <%#= current_admin.name %>さんがログイン中です。-->
-            <!--</span>-->
-          </nav>
           <li class="nav-item">
             <%= link_to "会員一覧",  admin_users_path, class: 'nav-link text-dark' %>
           </li>

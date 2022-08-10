@@ -1,6 +1,6 @@
 class Public::TweetsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_parents, only: :index
+  before_action :set_parents, only: [:index,:new]
 
   def new
     @tweet = Tweet.new
@@ -55,8 +55,45 @@ class Public::TweetsController < ApplicationController
     end
   end
 
+  def search
+    @prefecture = Prefecture.find_by(id: params[:id])
+    if @prefecture.ancestry == nil
+      prefecture = Prefecture.find_by(id: params[:id]).indirect_ids
+      if prefecture.empty?
+        @tweets = Tweet.where(prefecture_id: @prefecture.id).order(created_at: :desc)
+        @tweets = @tweets.where(user_id: params[:user_id]) if params[:user_id]
+      else
+        @tweets = []
+        find_item(prefecture)
+      end
+
+    elsif @prefecture
+      @tweets = Tweet.where(prefecture_id: params[:id]).order(created_at: :desc)
+      @tweets = @tweets.where(user_id: params[:user_id]) if params[:user_id]
+    else
+      prefecture = Prefecture.find_by(id: params[:id]).child_ids
+      @tweets = []
+      find_item(prefecture)
+    end
+  end
+
+  def find_item(prefecture)
+    prefecture.each do |id|
+      tweet_array = Tweet.where(prefecture_id: id).order(created_at: :desc)
+      if tweet_array.present?
+        tweet_array.each do |tweet|
+          if tweet.present?
+            @tweets.push(tweet)
+          end
+        end
+      end
+    end
+  end
+
   def get_prefecture_children
     @prefecture_children = Prefecture.find("#{params[:parent_id]}").children
+    logger.debug @prefecture_children.inspect
+    render json: @prefecture_children.map {|child| { id: child.id, name: child.name}}
   end
 
   private
