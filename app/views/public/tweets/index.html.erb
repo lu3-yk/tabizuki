@@ -25,14 +25,13 @@
   </div>
 
     <div class="col-lg-8">
-      <h1>投稿一覧</h1>
         <div class="table-responsive">
-          <table class="table table-hover table-inverse">
+          <table class="table align-middle">
             <thead>
               <tr>
                 <th></th>
-                <th>行きたい場所の写真</th>
-                <th colspan=4>都道府県</th>
+                <th class="h3">行ってみたい場所の写真</th>
+                <th colspan=4 class="h3">都道府県</th>
                 <th></th>
               </tr>
             </thead>
@@ -43,7 +42,9 @@
                     <%= link_to user_path(tweet.user.id) do %>
                       <%= image_tag tweet.user.get_profile_image(50,50), class: "user-icon" %><br>
                       <%= tweet.user.name %>
-                    <% end %>
+                    <% end %><br>
+                    <%= render "public/relationships/follow_btn", user: tweet.user %>
+
                   </td>
                   <td>
                     <%= link_to tweet_path(tweet.id) do %>
@@ -60,10 +61,10 @@
                 </tr>
                 <tr style="border:none;">
                   <td  style="border:none;">
-                    <%= render "public/relationships/follow_btn", user: tweet.user %>
+                    投稿日<%= tweet.created_at.strftime('%Y/%m/%d') %>
                   </td>
                   <td  style="border:none;">
-                    投稿日：<%= tweet.created_at.strftime('%Y/%m/%d') %>
+                    &nbsp;<br>
                     <%= link_to  "詳細",tweet_path(tweet.id) %>
                     <% if tweet.user == current_user %>
                       <%= link_to "編集", edit_tweet_path(tweet) %>
@@ -71,23 +72,25 @@
                     <% end %>
                   </td>
                   <td style="border:none;">
-                    <!--いいね機能-->
-                    <div id = "like_btn_<%= tweet.id %>">
-                      <%= render "public/likes/likes", tweet: tweet %>
+                    <div class="d-flex justify-content-end">
+                      <!--いいね機能-->
+                      <div id = "like_btn_<%= tweet.id %>">
+                        <%= render "public/likes/likes", tweet: tweet %>
+                      </div>
+                      <%#= link_to "#{tweet.comments.count} ", tweet_path(tweet.id) %>
+                      <!--コメント機能-->
+                      <div>
+                        <%= link_to tweet_path(tweet.id) do %>
+                          <i class="far fa-comment fa-2x"></i><%= tweet.comments.count %>
+                        <% end %>
+                      </div>
                     </div>
-                    <%#= link_to "#{tweet.comments.count} ", tweet_path(tweet.id) %>
-                  </td>
-                  <td style="border:none;">
-                    <!--コメント機能-->
-                    <%= link_to tweet_path(tweet.id) do %>
-                      <i class="far fa-comment fa-2x"></i><%= tweet.comments.count %>
-                    <% end %>
                   </td>
                 </tr>
               <% end %>
             </tbody>
         </table>
-      </div>  
+      </div>
     </div>
   </div>
 </div>

@@ -15,18 +15,18 @@
             <td><%= f.file_field :image,accept: "image/*" %></td>
           </tr>
           <tr>
-          <div class="append__prefecture">
-            <div class="category">
-              <div class="form__label">
-                <div class="weight-bold-text lavel__name ">
-                  都道府県
-                </div>
-                <div class="lavel__Required">
-                  <%= f.collection_select :prefecture_id, @parents, :id, :name,{ include_blank: "選択してください"},class:"serect_field", id:"item_prefecture_id" %>
+            <th><%= f.label :都道府県 %></th>
+            <td>
+              <div class="append__prefecture">
+                <div class="category">
+                  <div class="form__label">
+                    <div class="lavel__Required">
+                      <%= f.collection_select :prefecture_id, @parents, :id, :name,{ include_blank: "選択してください"},class:"serect_field", id:"item_prefecture_id" %>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
+            </td>
           </tr>
           <tr>
             <th><%= f.label :タイトル %></th>

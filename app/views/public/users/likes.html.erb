@@ -1,13 +1,28 @@
 <h1><i class="fas fa-grin-hearts"></i>をした投稿一覧</h1>
-  <% @like_tweets.each do |tweet| %>
-    <%= link_to user_path(tweet.user.id) do %>
-      <%= image_tag tweet.user.get_profile_image(50,50), class: "user-icon" %>
-      <%= tweet.user.name %>
-    <% end %>
-    <%= image_tag tweet.get_image(280,280) %>
-    <div id = "like_btn_<%= tweet.id %>">
-      <%= render "public/likes/likes", tweet: tweet %>
-    </div>
-  <% end %>
-
-
+  <div class="d-flex align-content-around flex-wrap col-9">
+    <% @like_tweets.each do |tweet| %>
+      <div class="card-deck" style="width: 18rem;">
+        <div class="card">
+          <div class="card-img-top">
+            <%= link_to tweet_path(tweet.id) do %>
+              <%= image_tag tweet.get_image(280,280) %>
+            <% end %>
+          </div>  
+          <div class="card-body">
+            <h4 class="card-title"><%= tweet.prefecture.name %></h4>
+            <h5 class="card-subtitle"><%= tweet.title %></h5>
+            <!--いいね機能-->
+            <div id = "like_btn_<%= tweet.id %>">
+              <%= render "public/likes/likes", tweet: tweet %>
+            </div>
+            <!--コメント機能-->
+            <%= link_to tweet_path(tweet.id) do %>
+              <i class="far fa-comment fa-2x"></i><%= tweet.comments.count %>
+            <% end %><br>
+            投稿日<%= tweet.created_at.strftime('%Y/%m/%d') %>
+            <%= link_to "詳細", tweet_path(tweet.id) %>
+          </div>
+        </div>
+      </div>
+    <% end %>  
+  </div>

@@ -1,29 +1,39 @@
-<% if @users.exists? %>
-<h1>フォロワー</h1>
-  <table>
-    <thead>
-      <tr>
-        <th></th>
-        <th>名前</th>
-        <th>自己紹介</th>
-        <th></th>
-      </tr>
-    </thead>
-    <% @users.each do |user| %>
-    <tbody>
-      <tr>
-        <td>
-            <%= link_to user_path(user.id) do %>
-              <%= image_tag user.get_profile_image(50,50), class: "user-icon" %><br>
+<div class="container">
+  <div class="row mt-5">
+    <div class="col">
+      <% if @users.exists? %>
+        <h1>フォロワー</h1>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th style="width: 20%"></th>
+                <th style="width: 20%">ユーザー名</th>
+                <th style="width: 40%">自己紹介</th>
+                <th style="width: 20%"></th>
+              </tr>
+            </thead>
+            <% @users.each do |user| %>
+            <tbody>
+              <tr style='height: 100px'>
+                <td>
+                  <%= link_to user_path(user.id) do %>
+                    <%= image_tag user.get_profile_image(50,50), class: "user-icon" %><br>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to user_path(user.id) do %>
+                    <%= user.name %>
+                  <% end %>
+                </td>
+                <td style="word-wrap:break-word;"><%= user.introduction %></td>
+                <td><%= render "public/relationships/follow_btn", user: user %></td>
+              </tr>
+            </tbody>
             <% end %>
-        </td>
-        <td><%= user.name %></td>
-        <td><%= user.introduction %></td>
-        <td><%= render "public/relationships/follow_btn", user: user %></td>
-      </tr>
-    </tbody>
-    <% end %>
-  </table>
-<% else %>
-  <p>ユーザーはいません</p>
-<% end %>
+          </table>
+      <% else %>
+        <p>ユーザーはいません</p>
+      <% end %>
+    </div>
+  </div>
+</div>
