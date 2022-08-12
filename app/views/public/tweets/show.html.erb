@@ -1,22 +1,32 @@
-<div>
-  <%= link_to user_path(@tweet.user.id) do %>
-   <%= image_tag @tweet.user.get_profile_image(50,50), class: "user-icon" %>
-   <%= @tweet.user.name %>
-  <% end %>
-  <%= image_tag @tweet.get_image(550, 550) %>
-</div>
-  <%= @tweet.title %><br>
-  <%= @tweet.body %>
-  <%= @tweet.prefecture.name %>
-  <% if @tweet.user == current_user %>
-    <%= link_to "編集", edit_tweet_path(@tweet) %>
-    <%= link_to "削除", tweet_path(@tweet), method: :delete %>
-  <% end %>
-<!--いいね機能-->
-<div id="like_btn_<%= @tweet.id %>">
-  <%= render "public/likes/likes", tweet: @tweet %>
-</div>
-<!--コメント機能-->
-<div id="comment_area">
-  <%= render "public/comments/comment", tweet: @tweet, comment: @comment %>
+<div class="container">
+  <div class="row md-10 mt-5">
+    <div class="col-7">
+      <div>
+        <%= link_to user_path(@tweet.user.id) do %>
+          <%= image_tag @tweet.user.get_profile_image(50,50), class: "user-icon" %>
+          <%= @tweet.user.name %>
+        <% end %>
+        <%= image_tag @tweet.get_image(500, 500) %>
+      </div>
+      <div class="mt-3">
+        <h2><%= @tweet.prefecture.name %></h2>
+        <h3><%= @tweet.title %></h3>
+        <h5><%= @tweet.body %></h5>
+        <% if @tweet.user == current_user %>
+          <%= link_to "編集", edit_tweet_path(@tweet) %>
+          <%= link_to "削除", tweet_path(@tweet), method: :delete %>
+        <% end %>
+      </div>
+      <!--いいね機能-->
+      <div id="like_btn_<%= @tweet.id %>">
+        <%= render "public/likes/likes", tweet: @tweet %>
+      </div>
+    </div>
+    <div class="col-5 row align-items-end">
+      <!--コメント機能-->
+      <div id="comment_area">
+        <%= render "public/comments/comment", tweet: @tweet, comment: @comment %>
+      </div>
+    </div>
+  </div>
 </div>

@@ -1,4 +1,4 @@
-<h2>Log in</h2>
+<h2>ログイン</h2>
 
 <%= form_with model: @user, url: user_session_path do |f| %>
   <div class="field">
@@ -19,12 +19,12 @@
   <% end %>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit "ログイン" %>
   </div>
 <% end %>
 
 <div>
-  <%= link_to 'ゲストログイン（閲覧用）', public_users_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
+  <%= link_to 'ゲストログイン（閲覧用）', user_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
 </div>
 
 <%= render "public/shared/links" %>

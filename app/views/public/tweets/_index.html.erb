@@ -1,0 +1,67 @@
+<div class="col-lg-8">
+  <table class="table">
+    <thead>
+      <tr>
+        <th style="width: 20%"></th>
+        <th class="h2" style="width: 50%">行ってみたい場所の写真</th>
+        <th class="h2 text-center" style="width: 30%">都道府県</th>
+      </tr>
+    </thead>
+    <% tweets.each do |tweet| %>
+      <tbody>
+          <tr style="width: 60%">
+            <td>
+              <%= link_to user_path(tweet.user.id) do %>
+                <%= image_tag tweet.user.get_profile_image(50,50), class: "user-icon" %><br>
+                <div class="h4 mt-2">
+                  <%= tweet.user.name %>
+                </div>
+              <% end %><br>
+              <div class="mt-5">
+                <%= render "public/relationships/follow_btn", user: tweet.user %>
+              </div>
+            </td>
+            <td>
+              <%= link_to tweet_path(tweet.id) do %>
+                 <%= image_tag tweet.get_image(400, 400) %>
+              <% end %>
+            </td>
+            <td colspan=3 class="h4 text-center"><%= tweet.prefecture.name %></td>
+          </tr>
+          <tr style="width: 30%">
+            <td colspan=5 style="border:none;">
+              <h5><%= tweet.title %></h5>
+              <p><%= tweet.body %></p>
+            </td>
+          </tr>
+          <tr style="width: 10%">
+            <td  style="border:none;">
+              投稿日<%= tweet.created_at.strftime('%Y/%m/%d') %>
+            </td>
+            <td  style="border:none;">
+              &nbsp;<br>
+              <%= link_to  "詳細",tweet_path(tweet.id) %>
+              <% if tweet.user == current_user %>
+                <%= link_to "編集", edit_tweet_path(tweet) %>
+                <%= link_to "削除", tweet_path(tweet), method: :delete %>
+              <% end %>
+            </td>
+            <td style="border:none;">
+              <div class="d-flex justify-content-end">
+                <!--いいね機能-->
+                <div id = "like_btn_<%= tweet.id %>">
+                  <%= render "public/likes/likes", tweet: tweet %>
+                </div>
+                <!--コメント機能-->
+                <div>
+                  <%= link_to tweet_path(tweet.id) do %>
+                    <i class="far fa-comment fa-2x"></i><%= tweet.comments.count %>
+                  <% end %>
+                </div>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    <% end %>
+  </table>
+</div>

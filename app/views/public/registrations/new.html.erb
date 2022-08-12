@@ -1,4 +1,4 @@
-<h2>Sign up</h2>
+<h2>新規登録</h2>
 
 <%= form_with model: @user,  url: user_registration_path do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
@@ -16,7 +16,7 @@
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <em>(<%= @minimum_password_length %>文字以上)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
@@ -27,8 +27,12 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "アカウントを登録" %>
   </div>
 <% end %>
+
+<div>
+  <%= link_to 'ゲストログイン（閲覧用）', user_guest_sign_up_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_up", method: :post %>
+</div>
 
 <%= render "public/shared/links" %>

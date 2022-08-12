@@ -17,8 +17,11 @@ class Public::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
-    redirect_to user_path(current_user)
+    if @user.update(user_params)
+      redirect_to user_path(current_user)
+    else
+      render "edit"
+    end  
   end
 
   def follows
@@ -50,12 +53,6 @@ class Public::UsersController < ApplicationController
     redirect_to root_path
   end
 
-  def ensure_guest_user
-    @user = User.find(params[:id])
-    if @user.name == "guestuser"
-      redirect_to user_path(current_user) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
-    end
-  end
 
   def set_parents
     @parents = Prefecture.where(ancestry: nil)
@@ -70,4 +67,12 @@ class Public::UsersController < ApplicationController
   def set_user
     @user = User.find(params[:id])
   end
+  
+  def ensure_guest_user
+    @user = User.find(params[:id])
+    if @user.name == "guestuser"
+      redirect_to user_path(current_user) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
+    end
+  end
+  
 end

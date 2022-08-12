@@ -6,15 +6,16 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
+  devise_scope :user do
+    post 'user/guest_sign_in', to: 'public/sessions#guest_sign_in'
+    post 'user/guest_sign_up', to: 'public/registrations#guest_sign_up'
+  end
 
   # URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
   
-    devise_scope :public do
-      post 'public/users/guest_sign_in', to: 'public/users/sessions#guest_sign_in'
-    end
 
 #会員関係
   scope module: :public do

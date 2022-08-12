@@ -42,6 +42,11 @@ class Public::RegistrationsController < Devise::RegistrationsController
       tweets_path
   end
 
+  def guest_sign_up
+    user = User.guest
+    sign_in user
+    redirect_to tweets_path, notice: 'ゲストユーザーでログインしました。'
+  end
 
   protected
 

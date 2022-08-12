@@ -7,7 +7,7 @@ $(document).on('turbolinks:load', function() {
     $('#tree_menu').show();
     $('.prefectureTree').show();
   }, function () {
- 
+
   });
 
   // 非同期にてヘッダーのカテゴリーを表示

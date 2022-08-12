@@ -1,6 +1,6 @@
 class Public::TweetsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_parents, only: [:index,:new]
+  before_action :set_parents, only: [:index, :new,:create]
 
   def new
     @tweet = Tweet.new
@@ -92,7 +92,6 @@ class Public::TweetsController < ApplicationController
 
   def get_prefecture_children
     @prefecture_children = Prefecture.find("#{params[:parent_id]}").children
-    logger.debug @prefecture_children.inspect
     render json: @prefecture_children.map {|child| { id: child.id, name: child.name}}
   end
 
@@ -103,6 +102,7 @@ class Public::TweetsController < ApplicationController
   end
 
   def tweet_params
-    params.require(:tweet).permit(:title, :body, :image,:prefecture_id)
+    params.require(:tweet).permit(:title, :body, :image,:prefecture_id,)
   end
+
 end

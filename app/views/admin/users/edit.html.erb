@@ -6,7 +6,7 @@
   </div>
   <div class="row mt-5">
     <div class="mx-auto">
-      <%= form_with model: @user do |f| %>
+      <%= form_with model: @user, url: admin_user_path(@user) do |f| %>
         <table class="table table-borderless">
           <tr>
             <th>プロフェール写真</th>

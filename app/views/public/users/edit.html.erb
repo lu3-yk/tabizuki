@@ -7,6 +7,8 @@
   <div class="row mt-5">
     <div class="mx-auto">
       <%= form_with model: @user do |f| %>
+        <!--エラーメッセージ-->
+        <%= render 'layouts/error_message', model: f.object %>
         <table class="table table-borderless">
           <tr>
             <th>プロフェール写真を変更</th>
