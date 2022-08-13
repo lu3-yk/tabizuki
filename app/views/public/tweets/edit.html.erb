@@ -1,22 +1,47 @@
-<h1>投稿を編集</h1>
-
-<div>
-  <%= image_tag @tweet.user.get_profile_image(50,50), class: "user-icon" %>
-  <%= @tweet.user.name %>
-  <%= image_tag @tweet.get_image(500, 500) %>
+<div class="container">
+  <div class="row mt-5">
+    <div class="col">
+      <h1 class="text-center">投稿を編集</h1>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col-6">
+      <div>
+        <%= image_tag @tweet.get_image(450, 450) %>
+      </div>
+    </div>
+    <div class="col-6">
+      <%= form_with model: @tweet do |f| %>
+        <table class="table text-center">
+          <tr>
+            <th><%= f.label :都道府県を編集 %></th>
+            <td>
+              <div class="append__prefecture">
+                <div class="category">
+                  <div class="form__label">
+                    <div class="lavel__Required">
+                      <%= f.collection_select :prefecture_id, @parents, :id, :name,{ include_blank: "選択してください"},class:"serect_field", id:"item_prefecture_id" %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th><%= f.label :タイトルを編集 %></th>
+            <td><%= f.text_field :title, autofocus: true, size: "37" %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :詳細コメントを編集 %></th>
+            <td><%= f.text_area :body, size: "35x10" %></td>
+          </tr>
+          <tr>
+            <th></th>
+            <td><%= f.submit "編集を保存" %></td>
+          </tr>
+        </table>
+      <% end %>
+    <div>
+  </div>
 </div>
 
-<%= form_with model: @tweet do |f| %>
-
-  <%= f.label :都道府県を編集 %>
-  <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, { prompt: '選択してください' } %>
-
-  <%= f.label :タイトルを編集 %>
-  <%= f.text_field :title, autofocus: true %>
-
-  <%= f.label :詳細コメントを編集 %>
-  <%= f.text_area :body %>
-
-  <%= f.submit "編集を保存" %>
-
-<% end %>

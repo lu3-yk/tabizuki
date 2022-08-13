@@ -1,6 +1,6 @@
 class Public::TweetsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_parents, only: [:index, :new,:create]
+  before_action :set_parents, only: [:index, :new, :create, :edit, :update]
 
   def new
     @tweet = Tweet.new
