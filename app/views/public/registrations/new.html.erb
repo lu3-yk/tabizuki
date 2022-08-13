@@ -1,38 +1,42 @@
-<h2>新規登録</h2>
-
-<%= form_with model: @user,  url: user_registration_path do |f| %>
-  <%= render "public/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+<div class="cantainer">
+  <div class="row">
+    <div class="col">
+      <h2 class="text-center">新規登録</h2>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="row mt-3">
+    <div class="col-5 mx-auto text-center">
+      <%= form_with model: @user,  url: user_registration_path do |f| %>
+        <%= render "public/shared/error_messages", resource: resource %>
+        <div class="field">
+          <%= f.label :name %><br />
+          <%= f.text_field :name %>
+        </div>
+        <div class="field">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        </div>
+        <div class="field">
+          <%= f.label :password %>
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %>文字以上)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "new-password" %>
+        </div>
+        <div class="field">
+          <%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        </div>
+        <div class="actions  mt-5">
+          <%= f.submit "アカウントを登録" %>
+        </div>
+      <% end %>
+      <div>
+        <%= link_to 'ゲストログイン（閲覧用）', user_guest_sign_up_path, class: "btn btn-secondary btn-sm my-3 sign_up", method: :post %>
+      </div>
+      <%= render "public/shared/links" %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %>文字以上)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "アカウントを登録" %>
-  </div>
-<% end %>
-
-<div>
-  <%= link_to 'ゲストログイン（閲覧用）', user_guest_sign_up_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_up", method: :post %>
 </div>
 
-<%= render "public/shared/links" %>
+

@@ -15,6 +15,7 @@
             <th>投稿数</th>
             <th>ステータス</th>
             <th></th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -42,6 +43,9 @@
               <% else %>
               <span style="color:green">有効</span>
               <% end %>
+            </td>
+            <td>
+              <%= link_to "詳細",admin_user_path(user.id) %>
             </td>
             <td>
               <!--<%# if current_user.admin? signed_in? %>-->

@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row mt-5">
     <div class="col">
-      <h1 class="text-center">プロフィールを編集</h1>
+      <h1 class="text-center"><%= @user.name %>さんのプロフィールを編集</h1>
     </div>
   </div>
   <div class="row mt-5">
     <div class="mx-auto">
       <%= form_with model: @user, url: admin_user_path(@user) do |f| %>
-        <table class="table table-borderless">
+        <table class="table table-borderless text-center">
           <tr>
             <th>プロフェール写真</th>
             <td><%= image_tag @user.get_profile_image(50,50), class: "user-icon" %></td>
@@ -20,17 +20,14 @@
             <th>メールアドレスを変更</th>
             <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
           </tr>
-          <tr>
-            <th>自己紹介文を変更</th>
-            <td><%= f.text_area :introduction,size: "30x5" %></td>
-          </tr>
         </table>
         <div class="text-center">
           <%= f.submit "変更を保存" %>
         </div>
       <% end %>
       <div class="text-center mt-5">
-        <%= link_to "退会させる", unsubscribe_path, class: "btn btn-outline-danger" %>
+        <%= link_to "会員一覧画面へ戻る", admin_users_path, class: "btn btn-outline-dark" %>　&emsp;
+        <%= link_to "退会させる", unsubscribe_admin_user_path(@user), class: "btn btn-outline-danger" %>
       </div>
     </div>
   </div>

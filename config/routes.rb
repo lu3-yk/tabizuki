@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
-  
+
 
 #会員関係
   scope module: :public do
@@ -39,7 +39,17 @@ Rails.application.routes.draw do
 
 #管理者関係
   namespace :admin do
-    resources :users
+    resources :users do
+      member do
+        get :unsubscribe
+        patch :withdrawal
+      end
+    end  
+    #   get :unsubscribe, on: :member
+    #   get :withdrawal, on: :member
+    # end
+    # get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
+    # patch '/users/:id/withdrawal' => 'users#withdrawal', as: 'withdrawal'
   end
 
 

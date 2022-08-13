@@ -58,7 +58,7 @@ class Public::TweetsController < ApplicationController
   def search
     @prefecture = Prefecture.find_by(id: params[:id])
     if @prefecture.ancestry == nil
-      prefecture = Prefecture.find_by(id: params[:id]).indirect_ids
+      prefecture = Prefecture.find_by(id: params[:id]).child_ids
       if prefecture.empty?
         @tweets = Tweet.where(prefecture_id: @prefecture.id).order(created_at: :desc)
         @tweets = @tweets.where(user_id: params[:user_id]) if params[:user_id]

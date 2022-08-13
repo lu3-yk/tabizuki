@@ -20,6 +20,7 @@
                     <%= image_tag tweet.user.get_profile_image(50,50), class: "user-icon" %>
                     <%= tweet.user.name %>
                   <% end %>
+                  <p class="text-right"><%= tweet.prefecture.name %></p>
                 </h6>
                 <h5 class="card-subtitle"><%= tweet.title %></h5>
 

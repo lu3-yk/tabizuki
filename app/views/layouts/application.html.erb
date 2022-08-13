@@ -16,6 +16,7 @@
       <!--フラッシュメッセージ-->
       <p class="notice text-center" style="color: #FF9999"><%= notice %></p>
       <p class="alert"><%= alert %></p>
+      <p class="notice text-center" style="color: red"><%= flash[:error] %></p>
       <%= yield %>
       <%= render 'layouts/footer' %>
     </main>

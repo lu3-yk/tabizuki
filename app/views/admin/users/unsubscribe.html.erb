@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col">
+      <h2 class="text-center">本当に退会させますか？</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <%= link_to "会員一覧に戻る",admin_users_path, class: "btn btn-outline-dark" %>&emsp;
+      <%= link_to "退会させる",withdrawal_admin_user_path(@user),method: :patch, class: "btn btn-outline-danger" %>
+    </div>
+  </div>
+</div>
