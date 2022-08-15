@@ -27,7 +27,9 @@
       <% end %>
       <div class="text-center mt-5">
         <%= link_to "会員一覧画面へ戻る", admin_users_path, class: "btn btn-outline-dark" %>　&emsp;
-        <%= link_to "退会させる", unsubscribe_admin_user_path(@user), class: "btn btn-outline-danger" %>
+        <% if !@user == @user.is_deleted %>
+          <%= link_to "退会させる", unsubscribe_admin_user_path(@user), class: "btn btn-outline-danger" %>
+        <% end %>
       </div>
     </div>
   </div>

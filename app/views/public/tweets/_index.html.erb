@@ -40,10 +40,10 @@
             </td>
             <td  style="border:none;">
               &nbsp;<br>
-              <%= link_to  "詳細",tweet_path(tweet.id) %>
+              <%= link_to  "詳細",tweet_path(tweet.id),class: "show" %>&emsp;
               <% if tweet.user == current_user %>
-                <%= link_to "編集", edit_tweet_path(tweet) %>
-                <%= link_to "削除", tweet_path(tweet), method: :delete %>
+                <%= link_to "編集", edit_tweet_path(tweet), class: "edit" %>&emsp;
+                <%= link_to "削除", tweet_path(tweet), method: :delete, class: "delete" %>
               <% end %>
             </td>
             <td style="border:none;">
@@ -51,11 +51,11 @@
                 <!--いいね機能-->
                 <div id = "like_btn_<%= tweet.id %>">
                   <%= render "public/likes/likes", tweet: tweet %>
-                </div>
+                </div>&emsp;
                 <!--コメント機能-->
                 <div>
                   <%= link_to tweet_path(tweet.id) do %>
-                    <i class="far fa-comment fa-2x"></i><%= tweet.comments.count %>
+                    <i class="far fa-comment fa-2x comment"></i><%= tweet.comments.count %>
                   <% end %>
                 </div>
               </div>

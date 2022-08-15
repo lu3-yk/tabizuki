@@ -14,6 +14,12 @@
  *= require_self
  */
 
+*{
+  margin: 0;
+  padding: 0;
+}
+
+/*ユーザーアイコン*/
 .user-icon-mypage{
   border-radius: 50%;
   width: 150px;
@@ -24,4 +30,87 @@
   border-radius: 50%;
   width: 50px;
   height: 50px;
+}
+
+/*いいねボタン*/
+.heart{
+  color: #FFCC66
+}
+
+.smile{
+  color: black
+}
+
+/*コメントボタン*/
+.comment{
+  color: #333333
+}
+
+/*編集・削除・詳細ボタン*/
+.edit{
+  background:limegreen;
+  border-radius:30%;
+  color: white
+}
+
+.delete{
+  background:red;
+  border-radius:30%;
+  color: white
+}
+
+.show{
+  background:#0099FF;
+  border-radius:30%;
+  color: white
+}
+
+/*都道府県ボタン*/
+.prefecture-button {
+  background-color: transparent;
+  border: 1px solid #266DB6;
+  box-sizing: border-box;
+  color: #00132C;
+  font-family: "Avenir Next LT W01 Bold",sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  padding: 16px 23px;
+  position: relative;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.prefecture-button:hover,
+.prefecture-button:active {
+  outline: 0;
+}
+
+.prefecture-button:hover {
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.prefecture-button:before {
+  background-color: #D5EDF6;
+  content: "";
+  height: calc(100% + 3px);
+  position: absolute;
+  right: -7px;
+  top: -9px;
+  transition: background-color 300ms ease-in;
+  width: 100%;
+  z-index: -1;
+}
+
+.prefecture-button:hover:before {
+  background-color: #6DCFF6;
+}
+
+@media (min-width: 768px) {
+  .prefecture-button {
+    padding: 16px 32px;
+  }
 }
