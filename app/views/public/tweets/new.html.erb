@@ -1,15 +1,15 @@
 <div class="container">
-  <div class="row mt-5">
+  <div class="row mt-4">
     <div class="col">
       <h1 class="text-center">新規投稿</h1>
     </div>
   </div>
-  <div class="row mt-5">
+  <div class="row mt-2">
     <div class="mx-auto">
       <%= form_with model: @tweet do |f| %>
         <!--エラーメッセージ-->
         <%= render 'layouts/error_message', model: f.object %>
-        <table class="table table-borderless">
+        <table class="table table-borderless shadow">
           <tr>
             <th><%= f.label :行きたい場所の写真 %></th>
             <td><%= f.file_field :image,accept: "image/*" %></td>
