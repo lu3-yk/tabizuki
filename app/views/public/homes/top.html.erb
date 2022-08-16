@@ -1,14 +1,29 @@
 <div class="container">
-  <div class="row mt-5">
+  <div class="row mt-4">
     <div class=col>
     <h1  class="text-center">WELCOME tabizuki<i class="fas fa-plane"></i></h1>
     </div>
   </div>
   <div class="row">
-    <div class="mx-auto">
+    <div class="col-12 text-center">
     <p>tabizukiは行きたい場所を都道府県ごとにまとめておけるサイトです。<br>
     会員登録をすると行きたい場所を投稿をすることができます。<br>
     また、コメントやいいねをすることでいろんな方々と繋がることができます</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 text-center">
+      <% if !user_signed_in? %>
+        <div>
+          <%= link_to "新規登録", new_user_registration_path, class: 'text-dark' %>
+        </div>
+        <div>
+          <%= link_to "ログイン", new_user_session_path, class: 'text-dark' %>
+        </div>
+        <div>
+          <%= link_to 'ゲストログイン（閲覧用）', user_guest_sign_in_path, class: "btn btn-secondary btn-sm my-3 sign_in", method: :post %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

@@ -38,10 +38,12 @@ class Public::TweetsController < ApplicationController
   end
 
   def update
-    tweet = Tweet.find(params[:id])
-    if tweet.update(tweet_params)
-      redirect_to tweet_path(tweet)
+    @tweet = Tweet.find(params[:id])
+    old_prefecture_id = @tweet.prefecture_id
+    if @tweet.update(tweet_params)
+      redirect_to tweet_path(@tweet)
     else
+      @tweet.prefecture_id = old_prefecture_id
       render"edit"
     end
   end

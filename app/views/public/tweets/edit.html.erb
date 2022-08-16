@@ -20,7 +20,7 @@
                 <div class="category">
                   <div class="form__label">
                     <div class="lavel__Required">
-                      <%= f.collection_select :prefecture_id, @parents, :id, :name,{ include_blank: "選択してください"},class:"serect_field", id:"item_prefecture_id" %>
+                      <%= f.collection_select :prefecture_id, @parents, :id, :name,{ include_blank: "選択してください", selected: @tweet.prefecture.parent.id },class:"serect_field", id:"item_prefecture_id" %>
                     </div>
                   </div>
                 </div>
@@ -37,11 +37,12 @@
           </tr>
           <tr>
             <th></th>
-            <td><%= f.submit "編集を保存" %></td>
+            <td><%= f.submit "編集を保存", class: "btn btn-outline-dark" %></td>
           </tr>
         </table>
       <% end %>
     <div>
   </div>
 </div>
-
+<div id="edit_prefectuure" style="display: none">edit</div>
+<div id="prefecture_id_value" style="display: none"><%=@tweet.prefecture_id%></div>

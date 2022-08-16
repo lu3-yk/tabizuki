@@ -1,7 +1,12 @@
+$(document).on('turbolinks:load', function() {
 $(function(){
   console.log('hello')
   function appendOption(prefecture){
     var html = `<option value="${prefecture.id}">${prefecture.name}</option>`;
+    return html;
+  }
+  function appendSelectedOption(prefecture) {
+    var html = `<option value="${prefecture.id}" selected=\"selected\">${prefecture.name}</option>`;
     return html;
   }
   function appendChildrenBox(insertHTML){
@@ -15,8 +20,7 @@ $(function(){
     $('.append__prefecture').append(childSelectHtml);
   }
 
-  $('#item_prefecture_id').on('change',function(){
-    var parentId = document.getElementById('item_prefecture_id').value;
+  function appendPrefecture(parentId) {
     if (parentId != ""){
       $.ajax({
         url: '/tweets/get_prefecture_children/',
@@ -28,9 +32,15 @@ $(function(){
         $('#children_wrapper').remove();
         console.log(children)
         var insertHTML = '';
+        var selectedValue = $('#prefecture_id_value').text();
         children.forEach(function(child){
-          insertHTML += appendOption(child);
+          if (child.id == selectedValue) {
+            insertHTML += appendSelectedOption(child);
+          } else {
+            insertHTML += appendOption(child);
+          }
         });
+
         appendChildrenBox(insertHTML);
         if (insertHTML == "") {
           $('#children_wrapper').remove();
@@ -40,5 +50,16 @@ $(function(){
         alert('カテゴリー取得に失敗しました');
       })
     };
-  })
+  }
+  $('#item_prefecture_id').on('change', function() {
+    var parentId = document.getElementById('item_prefecture_id').value;
+    appendPrefecture(parentId);
+  });
+
+  if ($('#edit_prefectuure').text() == 'edit') {
+    var parentId = document.getElementById('item_prefecture_id').value;
+    appendPrefecture(parentId);
+  }
+
+});
 });

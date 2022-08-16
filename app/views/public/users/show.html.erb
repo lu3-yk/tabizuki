@@ -27,7 +27,7 @@
         <tr colspan=2>
           <td>
             <%= link_to likes_user_path(@user) do %>
-              <i class="fas fa-grin-hearts fa-2x heart"></i>をした投稿一覧
+              <i class="far fa-grin-stars fa-2x star"></i>をした投稿一覧
             <% end %>
           </td>
         </tr>
@@ -44,6 +44,7 @@
           </td>
         </tr>
       </table>
+
       <!--都道府県カテゴリー-->
       <div data-user-id=<%= @user.id %> id="user-id"></div>
 
@@ -66,7 +67,6 @@
           </div>
         </div>
     </div>
-
     <!-- ユーザーの投稿一覧 -->
     <div class="d-flex align-content-around flex-wrap col-9 pl-3">
       <% if @tweets.exists? %>
@@ -81,21 +81,7 @@
                 <div class="card-body">
                   <h4 class="card-title"><%= tweet.prefecture.name %></h4>
                   <h5 class="card-subtitle"><%= tweet.title %></h5>
-
-                  <div class="d-flex justify-content-end">
-                  <!--いいね機能-->
-                    <div id = "like_btn_<%= tweet.id %>">
-                      <%= render "public/likes/likes", tweet: tweet %>
-                    </div>&emsp;
-                    <%#= link_to "#{tweet.comments.count} ", tweet_path(tweet.id) %>
-                    <!--コメント機能-->
-                    <div>
-                      <%= link_to tweet_path(tweet.id) do %>
-                        <i class="far fa-comment fa-2x comment"></i><%= tweet.comments.count %>
-                      <% end %>
-                    </div>&emsp;
-                    <%= link_to "詳細", tweet_path(tweet.id),class: "show" %>
-                  </div>
+                    <%= link_to "詳細", tweet_path(tweet.id),class: "btn btn-outline-info btn-sm" %>
                 </div>
               </div>
             </div>

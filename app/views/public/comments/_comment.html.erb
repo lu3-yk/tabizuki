@@ -13,7 +13,7 @@
       </td>
       <td style="width: 15%">
         <% if comment.user == current_user %>
-          <%= link_to "削除", tweet_comment_path(comment.tweet, comment),remote: true, method: :delete %>
+          <%= link_to "削除", tweet_comment_path(comment.tweet, comment),remote: true, method: :delete, class: "text-danger" %>
         <% end %>
       </td>
     </tr>
@@ -24,9 +24,31 @@
   <%= form_with(model: [tweet, comment],local: false) do |f| %>
     <!--エラーメッセージ-->
     <%= render 'layouts/error_message', model: f.object %>
+    <div class="alert alert-warning" id="comment_error_message" style="display: none">
+      <ul>
+        <li>何か入力してください。</li>
+      </ul>
+    </div>
     <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに",size: " 50 x 3 " %>
     <div style="text-align:right">
-      <%= f.submit "送信する" %>
+      <%= f.button :type => "submit", style: 'border-style: none;', :id => 'comment_submit' do %>
+        <i class="far fa-paper-plane fa-2x"></i>
+      <% end %>
     </div>
   <% end %>
 </div>
+
+<script>
+  $('#comment_submit').on('click', function(){
+    var comment = $('#comment_comment').val();
+    comment = comment.trim();    // 前後のスペースを削除
+    if (comment.length == 0) {
+      // エラーメッセージを表示する
+      $('#comment_error_message').css('display', 'block');
+      return false;
+    }
+    // エラーメッセージを非表示にする
+    $('#comment_error_message').css('display', 'none');
+    return true;
+  })
+</script>

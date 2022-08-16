@@ -12,7 +12,7 @@
         <% if user_signed_in? %>
         <!--会員サインイン済み  -->
         <div>
-          ようこそ、<%= current_user.name %>さん<br>
+          ようこそ、<%= current_user.name %>さん
             <%= link_to user_path(current_user.id) do %>
             <%= image_tag current_user.get_profile_image(50,50), class: "user-icon" %>
               マイページ<i class="fas fa-user"></i>
@@ -40,7 +40,7 @@
           <li class="nav-item">
             <%= link_to "会員一覧",  admin_users_path, class: 'nav-link text-dark' %>
           </li>
-          <li class="nav-item">
+          <li class="nav-item"iv>
             <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' %>
           </li>
         <% else %>

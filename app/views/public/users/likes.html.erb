@@ -1,7 +1,7 @@
 <div class="container-fluid">
-  <div class="row mt-5">
+  <div class="row mt-4">
     <div class="col-12">
-      <h1 class="text-center"><i class="fas fa-grin-hearts"></i>をした投稿一覧</h1>
+      <h1 class="text-center"><i class="far fa-grin-stars star"></i>をした投稿一覧</h1>
     </div>
   </div>
   <div class="row justify-content-center">
@@ -28,15 +28,15 @@
               <!--いいね機能-->
                 <div id = "like_btn_<%= tweet.id %>">
                   <%= render "public/likes/likes", tweet: tweet %>
-                </div>
+                </div>&emsp;
                 <%#= link_to "#{tweet.comments.count} ", tweet_path(tweet.id) %>
                 <!--コメント機能-->
                 <div>
                   <%= link_to tweet_path(tweet.id) do %>
-                    <i class="far fa-comment fa-2x"></i><%= tweet.comments.count %>
-                  <% end %>
+                    <i class="far fa-comment fa-2x comment"></i><%= tweet.comments.count %>
+                  <% end %>&emsp;
                 </div>
-                <%= link_to "詳細", tweet_path(tweet.id) %>
+                <%= link_to "詳細", tweet_path(tweet.id),class: "btn btn-outline-info btn-sm" %>
               </div>
             </div>
           </div>

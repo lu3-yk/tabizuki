@@ -1,6 +1,6 @@
 <% if tweet.liked_by?(current_user) %>
     <%= link_to tweet_likes_path(tweet), method: :delete, remote: true do %>
-      <i class="fas fa-grin-hearts fa-2x heart"></i><%= tweet.likes.count %>
+      <i class="far fa-grin-stars fa-2x star"></i><%= tweet.likes.count %>
     <% end %>
 <% else %>
     <%= link_to tweet_likes_path(tweet), method: :post, remote: true do %>
