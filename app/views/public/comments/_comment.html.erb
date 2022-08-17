@@ -13,7 +13,7 @@
       </td>
       <td style="width: 15%">
         <% if comment.user == current_user %>
-          <%= link_to "削除", tweet_comment_path(comment.tweet, comment),remote: true, method: :delete, class: "text-danger" %>
+          <%= link_to "削除", tweet_comment_path(comment.tweet, comment),remote: true, method: :delete,data: { confirm: '削除しますか？' }, class: "text-danger" %>
         <% end %>
       </td>
     </tr>

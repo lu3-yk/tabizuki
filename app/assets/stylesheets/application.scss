@@ -97,23 +97,39 @@
   }
 }
 
+// 文字サイズ
+
 .h2 {
-  font-size: calc(15px + 1.2vw)!important;
+  font-size: calc(10px + 1.2vw)!important;
 }
 
+// ヘッダー/フッター
 header {
   width: 100%;
-  height: 120px;
+  height: 100px;
   background-image: image_url('sky.jpg');
   background-size: cover;
-  background-position: center;
+  background-position: 20% 10%;
 }
+
+
+.footer{
+  width: 100%;
+  height: 100px;
+  background-image: image_url('sky.jpg');
+  background-size: cover;
+  background-position: 20% 80%;
+  position: absolute;/*←絶対位置*/
+
+}
+
+
 
 .main{
   background-color: white!important;
 }
 
-
+// テーブルカラー
 table {
   background-color: white;
 

@@ -43,7 +43,7 @@
               <%= link_to  "詳細",tweet_path(tweet.id),class: "btn btn-outline-info btn-sm" %>&emsp;
               <% if tweet.user == current_user %>
                 <%= link_to "編集", edit_tweet_path(tweet), class: "btn btn-outline-success btn-sm" %>&emsp;
-                <%= link_to "削除", tweet_path(tweet), method: :delete, class: "btn btn-outline-danger btn-sm" %>
+                <%= link_to "削除", tweet_path(tweet), method: :delete,data: { confirm: '削除しますか？' }, class: "btn btn-outline-danger btn-sm" %>
               <% end %>
             </td>
             <td style="border:none;">
