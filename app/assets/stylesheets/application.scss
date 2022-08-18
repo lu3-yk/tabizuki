@@ -91,17 +91,7 @@
   background-color: #6DCFF6;
 }
 
-@media (min-width: 768px) {
-  .prefecture-button {
-    padding: 16px 32px;
-  }
-}
 
-// 文字サイズ
-
-.h2 {
-  font-size: calc(10px + 1.2vw)!important;
-}
 
 // ヘッダー/フッター
 header {
@@ -132,6 +122,7 @@ header {
 // テーブルカラー
 table {
   background-color: white;
+  width: clac(100%);
 
 }
 
@@ -141,4 +132,17 @@ th {
 
 .tr_border_bottom {
   border-bottom: 10px solid #D7EEFF;
+}
+
+
+// レスポンシブ対応
+@media (min-width: 768px) {
+  .prefecture-button {
+    padding: 16px 32px;
+  }
+}
+// 文字サイズ
+
+.h2 {
+  font-size: calc(10px + 1.2vw)!important;
 }
