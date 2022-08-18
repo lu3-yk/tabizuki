@@ -48,7 +48,7 @@ $(document).on('turbolinks:load', function() {
             let child_html = childBuild(child)
             $(".prefectureTree-child").append(child_html);
           });
-          $('#tree_menu').css('max-height', '490px');
+          $('#tree_menu').css('max-height', '300px');
         })
         .fail(function () {
           alert("カテゴリーを選択してください");

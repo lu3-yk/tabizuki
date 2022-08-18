@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row mt-4">
     <div class=col>
-    <h1  class="text-center">WELCOME tabizuki<i class="fas fa-plane"></i></h1>
+    <h1  class="text-center">WELCOME <%= image_tag 'logo.png',size: "200x100" %></h1>
     </div>
   </div>
   <div class="row">
@@ -30,9 +30,9 @@
 
 <div class="slider">
         <div class="slider-inner">
-            <div class="slider-item"><img src="../assets/images/kyouto.jpeg"></div>
-            <div class="slider-item"><img src="kyouto.jpeg"></div>
-            <div class="slider-item"><img src="kyouto.jpeg"></div>
+            <div class="slider-item"><%= image_tag "kyouto.jpeg" %></div>
+            <div class="slider-item"><%= image_tag "kyouto.jpeg" %></div>
+            <div class="slider-item"><%= image_tag "kyouto.jpeg" %></div>
         </div>
     </div>
 
