@@ -1,13 +1,13 @@
 <div class="container">
-  <div class="row mt-5">
+  <div class="row mt-4">
     <div class="col">
-      <h1 class="text-center"><%= @user.name %>さんのプロフィールを編集</h1>
+      <h2 class="text-center"><%= @user.name %>さんのプロフィールを編集</h2>
     </div>
   </div>
-  <div class="row mt-5">
+  <div class="row mt-3">
     <div class="mx-auto">
       <%= form_with model: @user, url: admin_user_path(@user) do |f| %>
-        <table class="table table-borderless text-center">
+        <table class="table table-borderless text-center shadow">
           <tr>
             <th>プロフェール写真</th>
             <td><%= image_tag @user.get_profile_image(50,50), class: "user-icon" %></td>
@@ -22,13 +22,13 @@
           </tr>
         </table>
         <div class="text-center">
-          <%= f.submit "変更を保存" %>
+          <%= f.submit "変更を保存", class: "btn btn-outline-primary" %>
         </div>
       <% end %>
-      <div class="text-center mt-5">
-        <%= link_to "会員一覧画面へ戻る", admin_users_path, class: "btn btn-outline-dark" %>　&emsp;
+      <div class="mt-5 text-center">
+        <%= link_to "＜会員一覧画面へ戻る", admin_users_path, class: "btn btn-outline-dark btn-sm" %>　&emsp;
         <% if !@user == @user.is_deleted %>
-          <%= link_to "退会させる", unsubscribe_admin_user_path(@user), class: "btn btn-outline-danger" %>
+          <%= link_to "退会させる", unsubscribe_admin_user_path(@user), class: "btn btn-outline-danger btn-sm" %>
         <% end %>
       </div>
     </div>

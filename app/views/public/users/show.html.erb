@@ -22,7 +22,7 @@
         </div>
 
         <!-- ユーザーの詳細 -->
-        <table class="table table-borderless text-center mt-5">
+        <table class="table table-borderless text-center mt-5", style="background-color: #FFFFEE;">
           <tr>
             <td colspan=2>
               <%= image_tag @user.get_profile_image(150,150), class: "user-icon-mypage" %>
@@ -78,7 +78,7 @@
                   </div>
                   <div class="card-body">
                     <h4 class="card-title"><%= tweet.prefecture.name %></h4>
-                    <h5 class="card-subtitle"><%= tweet.title %></h5>
+                    <div style="height:80px"><h5 class="card-subtitle"><%= tweet.title %></h5></div>
                       <%= link_to "詳細", tweet_path(tweet.id),class: "btn btn-outline-info btn-sm" %>
                   </div>
                 </div>

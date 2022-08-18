@@ -92,7 +92,6 @@
 }
 
 
-
 // ヘッダー/フッター
 header {
   width: 100%;
@@ -136,9 +135,22 @@ th {
 
 
 // レスポンシブ対応
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
   .prefecture-button {
     padding: 16px 32px;
+  }
+}
+
+@media screen and (max-width: 425px){
+  .table-row th,
+  .table-row td{
+    display: block;
+    text-align: left;
+  }
+
+  .tweet-edit{
+  	display:flex;
+    flex-flow: column;
   }
 }
 // 文字サイズ
