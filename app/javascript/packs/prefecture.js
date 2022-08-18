@@ -11,8 +11,8 @@ $(document).on('turbolinks:load', function() {
   });
 
   // 非同期にてヘッダーのカテゴリーを表示
-  function childBuild(children) {
-    var searchPath = `/tweets/${children.id}/search`
+  function childBuild(child) {
+    var searchPath = `/tweets/${child.id}/search`
     var element = document.getElementById('user-id')
     if (element) {
       searchPath = searchPath + "?user_id=" + element.dataset.userId
@@ -20,7 +20,7 @@ $(document).on('turbolinks:load', function() {
 
     let child_prefecture = `
                         <li class="prefecture_child">
-                          <a href="${searchPath}"><input class="child_btn" type="button" value="${children.name}" name= "${children.id}">
+                          <a href="${searchPath}"><input class="child_btn" type="button" value="${child.name} ${child.prefecture_count}件" name= "${child.id}">
                           </a>
                         </li>
                         `
