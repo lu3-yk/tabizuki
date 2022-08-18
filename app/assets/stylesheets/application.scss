@@ -133,11 +133,19 @@ th {
   border-bottom: 10px solid #D7EEFF;
 }
 
+.background-navbar {
+  background-color: #E0E0E0E0;
+}
 
 // レスポンシブ対応
 @media screen and (min-width: 768px) {
   .prefecture-button {
     padding: 16px 32px;
+  }
+}
+@media screen and (min-width: 992px) {
+  .background-navbar {
+    background-color: #00000000;
   }
 }
 
