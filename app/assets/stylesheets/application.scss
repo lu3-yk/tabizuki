@@ -28,6 +28,7 @@
   background-size: auto;
   background-repeat: no-repeat;
 }
+
 /*ユーザーアイコン*/
 .user-icon-mypage{
   border-radius: 50%;
@@ -122,7 +123,6 @@ header {
 }
 
 
-
 .main{
   background-color: white!important;
 }
@@ -147,18 +147,18 @@ th {
 }
 
 // レスポンシブ対応
-@media screen and (min-width: 768px) {
+@media (min-width: 768px) {
   .prefecture-button {
     padding: 16px 32px;
   }
 }
-@media screen and (min-width: 1020px) {
+@media (min-width: 1024px) {
   .background-navbar {
     background-color: #00000000;
   }
 }
 
-@media screen and (max-width: 767px){
+@media (max-width: 767px){
   .table-row th,
   .table-row td{
     display: block;
