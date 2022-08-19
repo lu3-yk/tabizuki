@@ -1,68 +1,67 @@
 <div class="col-lg-8">
-  <div class="row shadow-lg">
-    <div class="col-12">
-      <div class="row" style="background-color: #D7EEFF">
-        <div class="col-3"></div>
-        <div class="col-6 h2 p-2 text-center">行ってみたい場所の写真</div>
-        <div class="col-3 h2 p-2 text-center">都道府県</div>
-      </div>
-      <% tweets.each do |tweet| %>
-        <div class="row my-3" style="background-color: #FFFFFF;">
-          <div class="col-12 col-md-3 text-center">
-            <%= link_to user_path(tweet.user.id) do %>
-              <%= image_tag tweet.user.get_profile_image(50,50), class: "user-icon" %><br>
-              <div class="h4 mt-2">
-                <%= tweet.user.name %>
+  <table class="table shadow-lg">
+    <thead>
+      <tr>
+        <th style="width: 20%"></th>
+        <th class="h2" style="width: 50%">行ってみたい場所の写真</th>
+        <th class="h2 text-center" style="width: 30%">都道府県</th>
+      </tr>
+    </thead>
+    <% tweets.each do |tweet| %>
+      <tbody>
+          <tr style="width: 60%">
+            <td>
+              <%= link_to user_path(tweet.user.id) do %>
+                <%= image_tag tweet.user.get_profile_image(50,50), class: "user-icon" %><br>
+                <div class="h4 mt-2">
+                  <%= tweet.user.name %>
+                </div>
+              <% end %><br>
+              <div class="mt-5">
+                <%= render "public/relationships/follow_btn", user: tweet.user %>
               </div>
-            <% end %>
-            <div class="mt-5">
-              <%= render "public/relationships/follow_btn", user: tweet.user %>
-            </div>
-          </div>
-          <div class="col-6 col-md-6">
-            <%= link_to tweet_path(tweet.id) do %>
-               <%= image_tag tweet.get_image(400, 400), style: "width: 100%;" %>
-            <% end %>
-          </div>
-          <div class="col-3 col-md-3 h4 text-center"><%= tweet.prefecture.name %></div>
-        <div class="row">
-          <div class="col-12">
+            </td>
+            <td>
+              <%= link_to tweet_path(tweet.id) do %>
+                 <%= image_tag tweet.get_image(400, 400) %>
+              <% end %>
+            </td>
+            <td colspan=3 class="h4 text-center"><%= tweet.prefecture.name %></td>
+          </tr>
+          <tr style="width: 30%">
+            <td colspan=5 style="border:none;">
               <h5><%= tweet.title %></h5>
-          </div>
-          <div class="col-12">
               <p><%= tweet.body %></p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-3">
-            投稿日<%= tweet.created_at.strftime('%Y/%m/%d') %>
-          </div>
-          <div class="col-6">
-            &nbsp;<br>
-            <%= link_to  "詳細",tweet_path(tweet.id),class: "btn btn-outline-info btn-sm" %>&emsp;
-            <% if tweet.user == current_user %>
-              <%= link_to "編集", edit_tweet_path(tweet), class: "btn btn-outline-success btn-sm" %>&emsp;
-              <%= link_to "削除", tweet_path(tweet), method: :delete,data: { confirm: '削除しますか？' }, class: "btn btn-outline-danger btn-sm" %>
-            <% end %>
-          </div>
-          <div class="col-3">
-            <div class="d-flex justify-content-end">
-              <!--いいね機能-->
-              <div id = "like_btn_<%= tweet.id %>">
-                <%= render "public/likes/likes", tweet: tweet %>
-              </div>&emsp;
-              <!--コメント機能-->
-              <div>
-                <%= link_to tweet_path(tweet.id) do %>
-                  <i class="far fa-comment fa-2x comment"></i><%= tweet.comments.count %>
-                <% end %>
+            </td>
+          </tr>
+          <tr style="width: 10%" class="tr_border_bottom">
+            <td  style="border:none;">
+              投稿日<%= tweet.created_at.strftime('%Y/%m/%d') %>
+            </td>
+            <td  style="border:none;">
+              &nbsp;<br>
+              <%= link_to  "詳細",tweet_path(tweet.id),class: "btn btn-outline-info btn-sm" %>&emsp;
+              <% if tweet.user == current_user %>
+                <%= link_to "編集", edit_tweet_path(tweet), class: "btn btn-outline-success btn-sm" %>&emsp;
+                <%= link_to "削除", tweet_path(tweet), method: :delete,data: { confirm: '削除しますか？' }, class: "btn btn-outline-danger btn-sm" %>
+              <% end %>
+            </td>
+            <td style="border:none;">
+              <div class="d-flex justify-content-end">
+                <!--いいね機能-->
+                <div id = "like_btn_<%= tweet.id %>">
+                  <%= render "public/likes/likes", tweet: tweet %>
+                </div>&emsp;
+                <!--コメント機能-->
+                <div>
+                  <%= link_to tweet_path(tweet.id) do %>
+                    <i class="far fa-comment fa-2x comment"></i><%= tweet.comments.count %>
+                  <% end %>
+                </div>
               </div>
-            </div>
-          </div>
-        </div>
-        </div>
-        <div style="background-color: #D7EEFF; border-bottom:4px solid #D7EEFF;margin-top: 5px;margin-bottom: 10px;">
-        </div>
-      <% end %>
-    </div>
-  </div>
+            </td>
+          </tr>
+      </tbody>
+    <% end %>
+  </table>
+</div>

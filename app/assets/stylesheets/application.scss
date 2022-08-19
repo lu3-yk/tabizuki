@@ -19,6 +19,15 @@
   padding: 0;
 }
 
+// トップページ
+.top-page {
+  width: 100%;
+  height: 520px;
+  background-image: image_url('japan.png');
+  background-position: center center;
+  background-size: auto;
+  background-repeat: no-repeat;
+}
 /*ユーザーアイコン*/
 .user-icon-mypage{
   border-radius: 50%;
@@ -149,7 +158,7 @@ th {
   }
 }
 
-@media screen and (max-width: 425px){
+@media screen and (max-width: 767px){
   .table-row th,
   .table-row td{
     display: block;

@@ -1,11 +1,11 @@
 <div class="container-fluid">
-    <div class="row justify-content-center mt-4">
+    <div class="row justify-content-center">
       <div class="col-md-3 col-sm-12 col-12 px-5">
-        <div class="item-categories mt-5 text-center">
+        <div class="item-categories mt-4 text-center">
         <!--都道府県カテゴリー-->
         <div data-user-id=<%= @user.id %> id="user-id"></div>
           <%= link_to  user_path(@user.id), class: "prefecture-button", id: 'categoBtn' do %>
-            都道府県から探す
+            都道府県別でみる
           <% end %>
           <div id="tree_menu">
             <ul class="prefectureTree">
@@ -22,7 +22,7 @@
         </div>
 
         <!-- ユーザーの詳細 -->
-        <table class="table table-borderless text-center mt-5", style="background-color: #FFFFEE;">
+        <table class="table table-borderless text-center mt-4", style="background-color: #FFFFEE;">
           <tr>
             <td colspan=2>
               <%= image_tag @user.get_profile_image(150,150), class: "user-icon-mypage" %>
@@ -35,17 +35,17 @@
           </tr>
           <tr colspan=2>
             <td>
-              <%= link_to likes_user_path(@user) do %>
+              <%= link_to likes_user_path(@user),class: 'text-dark' do %>
                 <i class="far fa-grin-stars fa-2x star"></i>をした投稿一覧
               <% end %>
             </td>
           </tr>
           <tr>
             <td>
-             <%= link_to follows_user_path(@user) do %>
+             <%= link_to follows_user_path(@user),class: 'text-dark' do %>
               フォロー<%= @following_users.count %>
              <% end %>&emsp;
-             <%= link_to followers_user_path(@user) do %>
+             <%= link_to followers_user_path(@user),class: 'text-dark' do %>
                フォロワー<%= @follower_users.count %>
              <% end %>
             </td>
@@ -53,7 +53,7 @@
           <tr>
             <td colspan=2>
               <% if user_signed_in? && @user == current_user %>
-                <%= link_to edit_user_path(current_user.id) do %>
+                <%= link_to edit_user_path(current_user.id),class: 'text-dark' do %>
                   プロフィール編集<i class="fas fa-cog"></i>
                 <% end %>
               <% end %>

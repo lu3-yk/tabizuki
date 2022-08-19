@@ -1,38 +1,28 @@
 <div class="container">
-  <div class="row mt-4">
-    <div class=col>
-    <h1  class="text-center">WELCOME <%= image_tag 'logo.png',size: "200x100" %></h1>
+  <div class="top-page">
+    <div class="row mt-4">
+      <div class=col>
+      <h1  class="text-center">WELCOME <%= image_tag 'logo.png',size: "200x100" %></h1>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-12 text-center">
-    <p>tabizukiは行きたい場所を都道府県ごとにまとめておけるサイトです。<br>
-    会員登録をすると行きたい場所を投稿をすることができます。<br>
-    また、コメントやいいねをすることでいろんな方々と繋がることができます</p>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-12 text-center">
-      <% if !user_signed_in? %>
-        <div>
-          <%= link_to "新規登録", new_user_registration_path, class: 'text-dark' %>
-        </div>
-        <div>
-          <%= link_to "ログイン", new_user_session_path, class: 'text-dark' %>
-        </div>
-        <div>
-          <%= link_to 'ゲストログイン（閲覧用）', user_guest_sign_in_path, class: "btn btn-secondary btn-sm my-3 sign_in", method: :post %>
-        </div>
-      <% end %>
+    <div class="row top-text">
+      <div class="col-12 text-center mt-２">
+        <p>tabizukiは行ってみたい場所を都道府県ごとに管理できるサイトです。<br>
+        会員登録をして行ってみたい場所を投稿をし、管理してみましょう。<br>
+        また、気になる投稿にアクションやコメントをすることで旅好きの皆さんと交流も楽しめます。</p>
+      </div>
+      <div class="col-12 text-center">
+        <% if !user_signed_in? %>
+          <div class="mt-3">
+            <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-dark" %>&emsp;
+            <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-dark" %>
+          </div>
+          <div class="mt-3">
+            <%= link_to 'ゲストログイン（閲覧用）', user_guest_sign_in_path, class: "btn btn-secondary btn-sm my-3 sign_in", method: :post %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
-
-<div class="slider">
-        <div class="slider-inner">
-            <div class="slider-item"><%= image_tag "kyouto.jpg" %></div>
-            <div class="slider-item"><%= image_tag "kyouto.jpg" %></div>
-            <div class="slider-item"><%= image_tag "kyouto.jpg" %></div>
-        </div>
-    </div>
 

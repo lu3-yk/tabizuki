@@ -1,12 +1,15 @@
-<div class="container px-5 px-sm-0 mt-5">
-  <div class= "row">
+<div class="container px-5 px-sm-0 mt-4">
+  <div class= "row justify-content-center">
     <div class="col-lg-4">
+      <div class="mb-5">
+        <%= link_to user_path(current_user.id) ,class: 'text-dark' do %>
+         <%= image_tag current_user.get_profile_image(50,50), class: "user-icon" %>　マイページ
+         <i class="far fa-user"></i>へ
+        <% end %>
+      </div>
       <div class="item-categories">
-      <h2 class="mb-4">
-        都道府県一覧
-      </h2>
       <%= link_to  tweets_path, class: "prefecture-button", id: 'categoBtn' do %>
-        都道府県から探す
+        都道府県別でみる
       <% end %>
       <div id="tree_menu">
         <ul class="prefectureTree">
@@ -22,11 +25,13 @@
         </ul>
       </div>
     </div>
+    <div class="my-5">&emsp;</div>
   </div>
   <% if @search_tweet %>
     <%= render 'index', tweets: @search_tweet %>
   <% else %>
     <%= render 'index', tweets: @tweets %>
   <% end %>
+</div>
 
 
