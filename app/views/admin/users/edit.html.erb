@@ -7,6 +7,8 @@
   <div class="row mt-3">
     <div class="mx-auto">
       <%= form_with model: @user, url: admin_user_path(@user) do |f| %>
+        <!--エラーメッセージ-->
+        <%= render 'layouts/error_message', model: f.object %>
         <table class="table table-borderless text-center shadow">
           <tr>
             <th>プロフェール写真</th>

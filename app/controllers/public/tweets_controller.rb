@@ -42,9 +42,10 @@ class Public::TweetsController < ApplicationController
     old_prefecture_id = @tweet.prefecture_id
     if @tweet.update(tweet_params)
       redirect_to tweet_path(@tweet)
-    else
-      @tweet.prefecture_id = old_prefecture_id
+    elsif @tweet.prefecture_id = old_prefecture_id
       render"edit"
+    else
+      render "edit"
     end
   end
 

@@ -12,6 +12,8 @@
     </div>
     <div class="col-6">
       <%= form_with model: @tweet do |f| %>
+        <!--エラーメッセージ-->
+        <%= render 'layouts/error_message', model: f.object %>
         <table class="table text-center table-row">
           <tr>
             <th><%= f.label :都道府県を編集 %></th>
