@@ -12,7 +12,7 @@
         また、気になる投稿にアクションやコメントをすることで旅好きの皆さんと交流も楽しめます。</p>
       </div>
       <div class="col-12 text-center">
-        <% if !user_signed_in? || !admin_signed_in? %>
+        <% if !user_signed_in? %>
           <div class="mt-3">
             <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-dark" %>&emsp;
             <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-dark" %>

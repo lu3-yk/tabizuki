@@ -4,7 +4,7 @@
         <div class="item-categories mt-4 text-center">
         <!--都道府県カテゴリー-->
         <div data-user-id=<%= @user.id %> id="user-id"></div>
-          <%= link_to  user_path(@user.id), class: "prefecture-button", id: 'categoBtn' do %>
+          <%= link_to  user_path(@user.id), class: "btn btn-outline-info", id: 'categoBtn' do %>
             都道府県別でみる
           <% end %>
           <div id="tree_menu">

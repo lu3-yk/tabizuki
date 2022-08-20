@@ -57,51 +57,6 @@
 }
 
 
-/*都道府県ボタン*/
-.prefecture-button {
-  background-color: transparent;
-  border: 1px solid #266DB6;
-  box-sizing: border-box;
-  color: #00132C;
-  font-family: "Avenir Next LT W01 Bold",sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 24px;
-  padding: 16px 23px;
-  position: relative;
-  text-decoration: none;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-}
-
-.prefecture-button:hover,
-.prefecture-button:active {
-  outline: 0;
-}
-
-.prefecture-button:hover {
-  background-color: transparent;
-  cursor: pointer;
-}
-
-.prefecture-button:before {
-  background-color: #D5EDF6;
-  content: "";
-  height: calc(100% + 3px);
-  position: absolute;
-  right: -7px;
-  top: -9px;
-  transition: background-color 300ms ease-in;
-  width: 100%;
-  z-index: -1;
-}
-
-.prefecture-button:hover:before {
-  background-color: #6DCFF6;
-}
-
-
 // ヘッダー/フッター
 header {
   width: 100%;
@@ -110,7 +65,6 @@ header {
   background-size: cover;
   background-position: 20% 10%;
 }
-
 
 .footer{
   width: 100%;
@@ -122,7 +76,7 @@ header {
 
 }
 
-
+// メイン背景
 .main{
   background-color: white!important;
 }
@@ -171,7 +125,6 @@ th {
   }
 }
 // 文字サイズ
-
 .h2 {
   font-size: calc(10px + 1.2vw)!important;
 }
