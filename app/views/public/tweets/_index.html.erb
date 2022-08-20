@@ -1,7 +1,7 @@
 <div class="col-lg-8">
   <div class="row  mb-5 shadow-lg">
     <div class="col-12">
-      <div class="row" style="background-color:#dcdcdc;">
+      <div class="row" style="background-color:#f7f6fb">
         <div class="col-3"></div>
         <div class="col-6 h2 p-2 text-center">行ってみたい場所の写真</div>
         <div class="col-3 h2 p-2 text-center">都道府県</div>
@@ -13,7 +13,7 @@
               <div class="col-12 col-md-3 text-center">
                 <%= link_to user_path(tweet.user.id) do %>
                   <%= image_tag tweet.user.get_profile_image(50,50), class: "user-icon" %><br>
-                  <div class="h4 mt-2">
+                  <div class="h4 mt-2 text-dark">
                     <%= tweet.user.name %>
                   </div>
                 <% end %>

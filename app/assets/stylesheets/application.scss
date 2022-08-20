@@ -68,17 +68,23 @@ body{
 }
 
 /*いいねボタン*/
-.star{
-  color: #FFCC66
+.heart{
+  color: #fa8072
 }
 
-.smile{
+.heart-light{
   color: black
 }
 
 /*コメントボタン*/
 .comment{
   color: #333333
+}
+
+
+.delete-btn{
+  padding:8px;
+  width:120px;
 }
 
 
@@ -114,7 +120,7 @@ table {
 }
 
 th {
-  background-color: #f5f5f5;
+  background-color: #f7f6fb;
 }
 
 
@@ -166,9 +172,4 @@ th {
 
 .btn{
   font-size: calc(8px + 0.5vw)!important;
-}
-
-.delete-btn{
-  padding:8px;
-  width:120px;
 }

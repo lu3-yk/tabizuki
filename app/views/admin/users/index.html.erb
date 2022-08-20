@@ -1,61 +1,53 @@
 <div class="container">
-  <div class="row mt-4">
-    <div class="col">
-      <h2 class="text text-center">会員一覧</h2>
-    </div>
-  </diV>
-  <div class="row mt-2">
-    <div class="mx-auto">
-      <table class="table table-hover">
-        <thead class="table">
-          <tr>
-            <th>プロフィール画像</th>
-            <th>氏名</th>
-            <th>メールアドレス</th>
-            <th>投稿数</th>
-            <th>ステータス</th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-        <% @users.each do |user| %>
-          <tr>
-            <td>
-              <%= link_to admin_user_path(user.id) do %>
-                <%= image_tag user.get_profile_image(50,50), class: "user-icon" %><br>
-              <% end %>
-            </td>
-            <td>
-              <%= link_to admin_user_path(user.id) do %>
-                <%= user.name %>
-              <% end %>
-            </td>
-            <td>
-              <%= user.email %>
-            </td>
-            <td>
-              <%= user.tweets.count %>
-            </td>
-            <td>
-              <% if user.is_deleted %>
-              <span style="color:red">退会</span>
-              <% else %>
-              <span style="color:green">有効</span>
-              <% end %>
-            </td>
-            <td>
-              <%= link_to "詳細",admin_user_path(user.id) %>
-            </td>
-            <td>
-              <!--<%# if current_user.admin? signed_in? %>-->
-                <%= link_to "編集",edit_admin_user_path(user.id) %>
-              <!--<#% end %>-->
-            </td>
-          </tr>
-        <% end %>
-        </tbody>
-      </table>
-    </div>
+  <h2 class="text text-center">会員一覧</h2>
+  <div class="table-responsive">
+    <table class="table table-hover text-center">
+      <thead>
+        <tr>
+          <th style="width:175px; min-width:80px;">プロフィール画像</th>
+          <th style="width:80px; min-width:80px;">氏名</th>
+          <th style="width:80px; min-width:80px;">メールアドレス</th>
+          <th style="width:80px; min-width:80px;">投稿数</th>
+          <th style="width:110px; min-width:110px;">ステータス</th>
+          <th style="width:80px; min-width:80px;"></th>
+          <th style="width:80px; min-width:80px;"></th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td>
+            <%= link_to admin_user_path(user.id) do %>
+              <%= image_tag user.get_profile_image(50,50), class: "user-icon" %><br>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to admin_user_path(user.id) do %>
+              <%= user.name %>
+            <% end %>
+          </td>
+          <td>
+            <%= user.email %>
+          </td>
+          <td>
+            <%= user.tweets.count %>
+          </td>
+          <td>
+            <% if user.is_deleted %>
+            <span style="color:red">退会</span>
+            <% else %>
+            <span style="color:green">有効</span>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to "詳細",admin_user_path(user.id) %>
+          </td>
+          <td>
+            <%= link_to "編集",edit_admin_user_path(user.id),class: "text-success" %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
   </div>
 </div>

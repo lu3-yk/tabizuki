@@ -23,7 +23,7 @@
         </div>
 
         <!-- ユーザーの詳細 -->
-        <table class="table table-borderless text-center mt-4", style="background-color: #fffaf0">
+        <table class="table table-borderless text-center mt-4", style="background-color: #f7f6fb">
           <tr>
             <td colspan=2>
               <%= image_tag @user.get_profile_image(150,150), class: "user-icon-mypage" %>
@@ -37,7 +37,7 @@
           <tr colspan=2>
             <td>
               <%= link_to likes_user_path(@user),class: 'text-dark' do %>
-                <i class="far fa-grin-stars fa-2x star"></i>をした投稿一覧
+                <i class="fas fa-heart fa-2x heart"></i>をした投稿一覧
               <% end %>
             </td>
           </tr>
