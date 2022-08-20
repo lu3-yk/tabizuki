@@ -32,12 +32,16 @@ $(document).on('turbolinks:load', function() {
     $('.parent_btn').css('color', '');
     $('.parent_btn').css('background-color', '');
     let prefectureParent = $(this).attr('name');
+    let user_id = $('#user_id').html();
+    console.log("user_id:" + user_id);
     timeParent = setTimeout(function () {
+      // http://??????/tweets/?parent_id=prefectureParent&user_id=
       $.ajax({
           url: '/tweets',
           type: 'GET',
           data: {
-            parent_id: prefectureParent
+            parent_id: prefectureParent,
+            user_id: user_id
           },
           dataType: 'json'
         })

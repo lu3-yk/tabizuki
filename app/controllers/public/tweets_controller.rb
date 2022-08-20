@@ -24,6 +24,9 @@ class Public::TweetsController < ApplicationController
       end
       format.json do
         @children = Prefecture.find(params[:parent_id]).children
+        if params[:user_id].present?
+          @user = User.find(params[:user_id])
+        end
       end
     end
   end

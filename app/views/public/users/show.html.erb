@@ -3,6 +3,7 @@
       <div class="col-md-3 col-sm-12 col-12 px-5">
         <div class="item-categories mt-4 text-center">
         <!--都道府県カテゴリー-->
+        <div id="user_id" style="display: none;"><%= @user.id %></div>
         <div data-user-id=<%= @user.id %> id="user-id"></div>
           <%= link_to  user_path(@user.id), class: "btn btn-outline-info", id: 'categoBtn' do %>
             都道府県別でみる
@@ -22,7 +23,7 @@
         </div>
 
         <!-- ユーザーの詳細 -->
-        <table class="table table-borderless text-center mt-4", style="background-color: #FFFFEE;">
+        <table class="table table-borderless text-center mt-4", style="background-color: #fffaf0">
           <tr>
             <td colspan=2>
               <%= image_tag @user.get_profile_image(150,150), class: "user-icon-mypage" %>
