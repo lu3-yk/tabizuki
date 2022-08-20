@@ -5,12 +5,12 @@
     </div>
   </div>
   <div class="row my-5 tweet-edit">
-    <div class="col-6">
-      <div>
-        <%= image_tag @tweet.get_image(400, 400) %>
+    <div class="col-sm-6">
+      <div class="mb-2 text-center">
+        <%= image_tag @tweet.get_image(380, 380), style: "width: 100%;" %>
       </div>
     </div>
-    <div class="col-6">
+    <div class="col-sm-6">
       <%= form_with model: @tweet do |f| %>
         <!--エラーメッセージ-->
         <%= render 'layouts/error_message', model: f.object %>
@@ -31,7 +31,7 @@
           </tr>
           <tr>
             <th><%= f.label :タイトルを編集 %></th>
-            <td><%= f.text_field :title, autofocus: true, size: "37" %></td>
+            <td><%= f.text_field :title, autofocus: true, size: "35" %></td>
           </tr>
           <tr>
             <th><%= f.label :詳細コメントを編集 %></th>

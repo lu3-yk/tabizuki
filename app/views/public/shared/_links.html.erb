@@ -1,7 +1,9 @@
-<%- if controller_name != 'sessions' %>
-  <%= link_to "既に会員の方はこちら", new_session_path(resource_name) %><br />
-<% end %>
+<div class="mb-5">
+  <%- if controller_name != 'sessions' %>
+    <%= link_to "既に会員の方はこちら", new_session_path(resource_name) %><br />
+  <% end %>
 
-<%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <%= link_to "新規登録はこちら", new_registration_path(resource_name) %><br />
-<% end %>
+  <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+    <%= link_to "新規登録はこちら", new_registration_path(resource_name) %><br />
+  <% end %>
+</div>

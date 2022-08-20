@@ -19,8 +19,8 @@
     </tr>
   </table>
 <% end %>
-<p>コメント件数：<%= tweet.comments.count %></p>
 <div class="text-right">
+  <p class="text-right">コメント件数：<%= tweet.comments.count %></p>
   <%= form_with(model: [tweet, comment],local: false) do |f| %>
     <!--エラーメッセージ-->
     <%= render 'layouts/error_message', model: f.object %>
