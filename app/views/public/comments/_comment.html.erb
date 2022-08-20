@@ -1,19 +1,19 @@
 <% tweet.comments.each do |comment| %>
   <table class="table">
     <tr>
-      <td style="width: 40%">
+      <td style="width: 25%">
         <%= link_to user_path(comment.user.id) do %>
-          <%= image_tag comment.user.get_profile_image(50,50), class: "user-icon" %>
+          <%= image_tag comment.user.get_profile_image(50,50), class: "user-icon" %><br>
           <%= comment.user.name %><br>
         <% end %>
           <%= comment.created_at.strftime('%Y/%m/%d') %>
       </td>
-      <td style="width: 45%">
+      <td style="width: 50%">
         <%= comment.comment %>
       </td>
-      <td style="width: 15%">
+      <td style="width: 25%">
         <% if comment.user == current_user %>
-          <%= link_to "削除", tweet_comment_path(comment.tweet, comment),remote: true, method: :delete,data: { confirm: '削除しますか？' }, class: "text-danger" %>
+          <%= link_to "削除", tweet_comment_path(comment.tweet, comment),remote: true, method: :delete,data: { confirm: '削除しますか？' }, class: "text-danger delete-btn" %>
         <% end %>
       </td>
     </tr>
@@ -29,7 +29,7 @@
         <li>コメントを入力してください。</li>
       </ul>
     </div>
-    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに",size: " 50 x 3 " %>
+    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに",size: " 40 x 3 " %>
     <div style="text-align:right">
       <%= f.button :type => "submit", style: 'border-style: none;', :id => 'comment_submit' do %>
         <i class="far fa-paper-plane fa-2x"></i>

@@ -50,6 +50,8 @@ body{
   background-position: center center;
   background-size: auto;
   background-repeat: no-repeat;
+  padding:0;
+  margin:0;
 }
 
 /*ユーザーアイコン*/
@@ -154,10 +156,19 @@ th {
 }
 
 .h4{
-  font-size: calc(8px + 1.2vw)!important;
+  font-size: calc(8px + 1.0vw)!important;
 }
+
+.p{
+  font-size: calc(7px + 0.9vw)!important;
+}
+
 
 .btn{
   font-size: calc(8px + 0.5vw)!important;
 }
 
+.delete-btn{
+  padding:8px;
+  width:120px;
+}
