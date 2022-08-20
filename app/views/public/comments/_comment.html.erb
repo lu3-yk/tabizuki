@@ -20,7 +20,7 @@
   </table>
 <% end %>
 <p>コメント件数：<%= tweet.comments.count %></p>
-<div>
+<div class="text-right">
   <%= form_with(model: [tweet, comment],local: false) do |f| %>
     <!--エラーメッセージ-->
     <%= render 'layouts/error_message', model: f.object %>
@@ -29,7 +29,7 @@
         <li>コメントを入力してください。</li>
       </ul>
     </div>
-    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに",size: " 40 x 3 " %>
+    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに",size: " 35 x 3 " %>
     <div style="text-align:right">
       <%= f.button :type => "submit", style: 'border-style: none;', :id => 'comment_submit' do %>
         <i class="far fa-paper-plane fa-2x"></i>

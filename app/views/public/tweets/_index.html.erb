@@ -41,18 +41,20 @@
           </div>
           <div class="col-12">
             <div class="row">
-              <div class="col-3">
+              <div class="col-12">
                 投稿日<%= tweet.created_at.strftime('%Y/%m/%d') %>
               </div>
-              <div class="col-6 h4">
+            </div>
+            <div class="row">
+              <div class="col-8 h4">
                 &nbsp;<br>
                 <%= link_to  "詳細",tweet_path(tweet.id),class: "btn btn-outline-info btn-sm" %>&emsp;
                 <% if tweet.user == current_user %>
                   <%= link_to "編集", edit_tweet_path(tweet), class: "btn btn-outline-success btn-sm" %>&emsp;
-                  <%= link_to "削除", tweet_path(tweet), method: :delete,data: { confirm: '削除しますか？' }, class: "btn btn-outline-danger btn-sm mt-2 mt-md-0" %>
+                  <%= link_to "削除", tweet_path(tweet), method: :delete,data: { confirm: '削除しますか？' }, class: "btn btn-outline-danger btn-sm" %>
                 <% end %>
               </div>
-              <div class="col-3 btn">
+              <div class="col-4 btn">
                 <div class="d-flex justify-content-end">
                   <!--いいね機能-->
                   <div id = "like_btn_<%= tweet.id %>">
