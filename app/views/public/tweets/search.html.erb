@@ -5,7 +5,7 @@
     </div>
   </div>
     <% if @tweets.present? %>
-      <div class="row justify-content-center">
+      <div class="row text-center">
         <div class="d-flex flex-wrap col-9 pl-5">
           <% @tweets.each do |tweet| %>
             <div class="card-deck ml-1 mb-1" style="width:310px;">
@@ -15,7 +15,7 @@
                     <%= image_tag tweet.get_image(260,240) %>
                   <% end %>
                 </div>
-                <div class="card-body">
+                <div class="card-body text-left">
                   <h6 class="card-title">
                     <%= link_to user_path(tweet.user.id) do %>
                       <%= image_tag tweet.user.get_profile_image(50,50), class: "user-icon" %>
