@@ -43,12 +43,16 @@
           </tr>
           <tr>
             <td>
-             <%= link_to follows_user_path(@user),class: 'text-dark' do %>
-              フォロー<%= @following_users.count %>
-             <% end %>&emsp;
-             <%= link_to followers_user_path(@user),class: 'text-dark' do %>
-               フォロワー<%= @follower_users.count %>
-             <% end %>
+              <div id="following-count-<%= @user.id %>">
+               <%= link_to follows_user_path(@user),class: 'text-dark', remote: true do %>
+                フォロー<%= @following_users.count %>
+               <% end %>&emsp;
+              </div>
+              <div id="follower-count-<%= @user.id %>">
+               <%= link_to followers_user_path(@user),class: 'text-dark', remote: true do %>
+                 フォロワー<%= @follower_users.count %>
+               <% end %>
+              </div>
             </td>
           </tr>
           <tr>
