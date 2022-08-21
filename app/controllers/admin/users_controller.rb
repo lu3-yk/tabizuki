@@ -33,9 +33,8 @@ class Admin::UsersController < ApplicationController
     @user.update(is_deleted: true)
     @user.tweets.destroy_all
     @user.comments.destroy_all
-    reset_session
     flash[:notice] = "退会処理を実行いたしました"
-    redirect_to users_path
+    redirect_to admin_users_path
   end
 
   private
