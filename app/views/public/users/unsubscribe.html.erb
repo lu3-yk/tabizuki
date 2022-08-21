@@ -1,23 +1,22 @@
 <div class="container">
     <div class="row mt-5">
        <div class=col>
-        <h2 class="text-center">本当に退会しますか？</h2>
+        <h2 class="text-center">アカウントを削除して退会しますか？</h2>
        </div>
     </div>
     <div class="row">
       <div class="mx-auto">
-        <p class="text-center">
-          退会すると、会員登録情報や</br>
-          今までの投稿等が削除されます。</br>
+        <p class="text-center my-3">
+          退会すると、全ての登録データが削除されます。</br>
+          削除されたデータは復元することができません<br>
           退会する場合は、「退会する」をクリックしてください。</br>
         </p>
       </div>
     </div>
     <div class="row">
       <div class="mx-auto">
-        <%= link_to "退会しない", user_path(@user.id),class: "btn btn-outline-info" %>　　
+        <%= link_to "退会しない", user_path(@user.id),class: "btn btn-outline-info" %>&emsp;&emsp;
         <%= link_to "退会する", withdrawal_path, method: :patch, data: { confilm: "本当に退会しますか？"},class: "btn btn-outline-danger"  %>
       </div>
     </div>
-</div>  
-  
+</div>

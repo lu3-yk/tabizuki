@@ -21,7 +21,7 @@
                 <div class="category">
                   <div class="form__label">
                     <div class="lavel__Required">
-                      <%= f.collection_select :prefecture_id, @parents, :id, :name,{ include_blank: "選択してください"},class:"serect_field", id:"item_prefecture_id" %>
+                      <%= f.collection_select :prefecture_id, @parents, :id, :name,{ include_blank: "選択してください"},class:"serect_field form-control", id:"item_prefecture_id" %>
                     </div>
                   </div>
                 </div>
@@ -30,11 +30,12 @@
           </tr>
           <tr>
             <th><%= f.label :タイトル %></th>
-            <td><%= f.text_field :title, placeholder:"〜へいきたい！など",size: "35" %></td>
+            <td><%= f.text_field :title, placeholder:"〜へいきたい！など",size: "35",class: "form-control" %></td>
           </tr>
           <tr>
             <th><%= f.label :詳細コメント %></th>
-            <td><%= f.text_area :body, placeholder:"〇〇市〇〇町/観光地名やお店の名前/魅力ポイントなど" ,size: "35x10"%></td>
+            <td><%= f.text_area :body, placeholder:"〇〇市〇〇町/観光地名やお店の名前/魅力ポイントなど" ,size: "35x10", class: "form-control"%></td>
+            <td></td>
           </tr>
           <tr>
             <th></th>

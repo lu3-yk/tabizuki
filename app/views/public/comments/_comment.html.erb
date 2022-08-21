@@ -29,7 +29,7 @@
         <li>コメントを入力してください。</li>
       </ul>
     </div>
-    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに",size: " 35 x 3 " %>
+    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに",size: " 35 x 3 ",class: "form-control"  %>
     <div style="text-align:right">
       <%= f.button :type => "submit", style: 'border-style: none;', :id => 'comment_submit' do %>
         <i class="far fa-paper-plane fa-2x"></i>
