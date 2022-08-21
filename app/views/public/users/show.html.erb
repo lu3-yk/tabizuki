@@ -59,7 +59,9 @@
                 <% end %>
               <% end %>
               <!--フォローボタン  -->
-              <%= render "public/relationships/follow_btn", user: @user %>
+              <div id="follow-btn-<%= @user.id %>">
+                <%= render "public/relationships/follow_btn", user: @user %>
+              </div>
             </td>
           </tr>
         </table>
