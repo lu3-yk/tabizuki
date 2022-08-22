@@ -1,8 +1,10 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
+  # before_action :ensure_user, only: [:edit, :update, :destroy] 他のユーザがurlから入れないようにする
   before_action :set_user, only: [:likes]
   before_action :ensure_guest_user, only: [:edit]
   before_action :set_parents, only: :show
+
 
   def show
     @user = User.find(params[:id])
@@ -21,7 +23,7 @@ class Public::UsersController < ApplicationController
       redirect_to user_path(current_user)
     else
       render "edit"
-    end  
+    end
   end
 
   def follows
@@ -67,12 +69,12 @@ class Public::UsersController < ApplicationController
   def set_user
     @user = User.find(params[:id])
   end
-  
+
   def ensure_guest_user
     @user = User.find(params[:id])
     if @user.name == "guestuser"
       redirect_to user_path(current_user) , notice: 'guestuserはプロフィール編集画面へ遷移できません。'
     end
   end
-  
+
 end
