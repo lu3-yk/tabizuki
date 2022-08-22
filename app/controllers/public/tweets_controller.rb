@@ -1,6 +1,6 @@
 class Public::TweetsController < ApplicationController
   before_action :authenticate_user!
-  before_action :ensure_correct_user, only:[:edit, :update, :destroy]
+  before_action :ensure_correct_user, only: %i[edit update destroy]
   before_action :set_parents, only: %i[index new create edit update]
 
   def new
@@ -44,9 +44,8 @@ class Public::TweetsController < ApplicationController
     old_prefecture_id = @tweet.prefecture_id
     if @tweet.update(tweet_params)
       redirect_to tweet_path(@tweet)
-    elsif @tweet.prefecture_id = old_prefecture_id
-      render 'edit'
     else
+      @tweet.prefecture_id = old_prefecture_id
       render 'edit'
     end
   end
@@ -102,9 +101,9 @@ class Public::TweetsController < ApplicationController
 
   def ensure_correct_user
     @tweet = Tweet.find(params[:id])
-    redirect_to tweets_path  if @tweet.user != current_user
+    redirect_to tweets_path if @tweet.user != current_user
   end
-  
+
   private
 
   def set_parents

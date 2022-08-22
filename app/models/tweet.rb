@@ -6,9 +6,9 @@ class Tweet < ApplicationRecord
   has_many :likes,    dependent: :destroy
 
   # バリデーション
+  validates :image,         presence: true
   validates :title,         presence: true, length: { maximum: 30 }
   validates :body,          presence: true, length: { maximum: 300 }
-  validates :image,         presence: true
 
   # Likesテーブル内に存在（exists?）するか
   def liked_by?(user)

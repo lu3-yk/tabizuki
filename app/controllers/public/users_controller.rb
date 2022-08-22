@@ -1,6 +1,6 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :correct_user, only: [:edit, :update, :destroy] #他のユーザがurlから編集できないようにする
+  before_action :correct_user, only: %i[edit update destroy]
   before_action :set_user, only: [:likes]
   before_action :ensure_guest_user, only: [:edit]
   before_action :set_parents, only: :show
@@ -62,7 +62,7 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     redirect_to tweets_path if @user != current_user
   end
-  
+
   private
 
   def user_params
