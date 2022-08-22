@@ -1,4 +1,4 @@
 class Prefecture < ApplicationRecord
-  has_many :tweets, dependent: :destroy
+  has_many :tweets
   has_ancestry
 end

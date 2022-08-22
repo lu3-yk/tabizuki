@@ -1,5 +1,6 @@
 class Public::TweetsController < ApplicationController
   before_action :authenticate_user!
+  before_action :ensure_correct_user, only:[:edit, :update, :destroy]
   before_action :set_parents, only: %i[index new create edit update]
 
   def new
@@ -99,6 +100,11 @@ class Public::TweetsController < ApplicationController
     render json: @prefecture_children.map { |child| { id: child.id, name: child.name } }
   end
 
+  def ensure_correct_user
+    @tweet = Tweet.find(params[:id])
+    redirect_to tweets_path  if @tweet.user != current_user
+  end
+  
   private
 
   def set_parents
