@@ -11,13 +11,10 @@ class Tweet < ApplicationRecord
   validates :image,         presence: true
   # validates :prefecture_id, presence: true
 
-
-  #Likesテーブル内に存在（exists?）するか
+  # Likesテーブル内に存在（exists?）するか
   def liked_by?(user)
     likes.exists?(user_id: user.id)
   end
-
-
 
   def get_image(width, height)
     unless image.attached?
@@ -26,5 +23,4 @@ class Tweet < ApplicationRecord
     end
     image.variant(resize_to_fill: [width, height]).processed
   end
-
 end

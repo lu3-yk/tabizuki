@@ -19,10 +19,9 @@ class Admin::UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to admin_user_path(@user)
     else
-      render "edit"
+      render 'edit'
     end
   end
-
 
   def unsubscribe
     @user = User.find(params[:id])
@@ -33,14 +32,13 @@ class Admin::UsersController < ApplicationController
     @user.update(is_deleted: true)
     @user.tweets.destroy_all
     @user.comments.destroy_all
-    flash[:notice] = "退会処理を実行いたしました"
+    flash[:notice] = '退会処理を実行いたしました'
     redirect_to admin_users_path
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:name,:email,:introduction)
+    params.require(:user).permit(:name, :email, :introduction)
   end
-
 end

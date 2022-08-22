@@ -5,13 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-require "csv"
+require 'csv'
 
-#管理者側のログインメールとパスワード
-Admin.find_or_create_by(email: "admin@gmail.com") do |admin|
-  admin.password = "bbbbbb"
+# 管理者側のログインメールとパスワード
+Admin.find_or_create_by(email: 'admin@gmail.com') do |admin|
+  admin.password = 'bbbbbb'
 end
 
 CSV.foreach('db/prefecture_lists.csv') do |row|
-  Prefecture.create(:id => row[0], :name => row[1], :ancestry => row[2])
+  Prefecture.create(id: row[0], name: row[1], ancestry: row[2])
 end

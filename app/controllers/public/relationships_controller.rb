@@ -14,5 +14,4 @@ class Public::RelationshipsController < ApplicationController
     @tweets = Tweet.all.order(created_at: :desc)
     # redirect_to request.referer
   end
-
 end

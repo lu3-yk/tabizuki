@@ -5,7 +5,6 @@ class Public::UsersController < ApplicationController
   before_action :ensure_guest_user, only: [:edit]
   before_action :set_parents, only: :show
 
-
   def show
     @user = User.find(params[:id])
     @tweets = @user.tweets.order(created_at: :desc)
@@ -22,7 +21,7 @@ class Public::UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to user_path(current_user)
     else
-      render "edit"
+      render 'edit'
     end
   end
 
@@ -51,10 +50,9 @@ class Public::UsersController < ApplicationController
     @user.tweets.destroy_all
     @user.comments.destroy_all
     reset_session
-    flash[:notice] = "ご利用ありがとうございました。"
+    flash[:notice] = 'ご利用ありがとうございました。'
     redirect_to root_path
   end
-
 
   def set_parents
     @parents = Prefecture.where(ancestry: nil)
@@ -63,7 +61,7 @@ class Public::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :profile_image, :title ,:body,:introduction, :email, :passward)
+    params.require(:user).permit(:name, :profile_image, :title, :body, :introduction, :email, :passward)
   end
 
   def set_user
@@ -72,9 +70,6 @@ class Public::UsersController < ApplicationController
 
   def ensure_guest_user
     @user = User.find(params[:id])
-    if @user.name == "guestuser"
-      redirect_to user_path(current_user) , notice: 'guestuserはプロフィール編集画面へ遷移できません。'
-    end
+    redirect_to user_path(current_user), notice: 'guestuserはプロフィール編集画面へ遷移できません。' if @user.name == 'guestuser'
   end
-
 end

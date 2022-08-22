@@ -1,7 +1,7 @@
-require "test_helper"
+require 'test_helper'
 
 class Public::HomesControllerTest < ActionDispatch::IntegrationTest
-  test "should get top" do
+  test 'should get top' do
     get public_homes_top_url
     assert_response :success
   end

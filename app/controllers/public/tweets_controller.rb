@@ -1,6 +1,6 @@
 class Public::TweetsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_parents, only: [:index, :new, :create, :edit, :update]
+  before_action :set_parents, only: %i[index new create edit update]
 
   def new
     @tweet = Tweet.new
@@ -13,7 +13,7 @@ class Public::TweetsController < ApplicationController
     if @tweet.save
       redirect_to tweets_path
     else
-      render "new"
+      render 'new'
     end
   end
 
@@ -24,9 +24,7 @@ class Public::TweetsController < ApplicationController
       end
       format.json do
         @children = Prefecture.find(params[:parent_id]).children
-        if params[:user_id].present?
-          @user = User.find(params[:user_id])
-        end
+        @user = User.find(params[:user_id]) if params[:user_id].present?
       end
     end
   end
@@ -46,12 +44,11 @@ class Public::TweetsController < ApplicationController
     if @tweet.update(tweet_params)
       redirect_to tweet_path(@tweet)
     elsif @tweet.prefecture_id = old_prefecture_id
-      render"edit"
+      render 'edit'
     else
-      render "edit"
+      render 'edit'
     end
   end
-
 
   def destroy
     @tweet = Tweet.find(params[:id])
@@ -66,7 +63,7 @@ class Public::TweetsController < ApplicationController
 
   def search
     @prefecture = Prefecture.find_by(id: params[:id])
-    if @prefecture.ancestry == nil
+    if @prefecture.ancestry.nil?
       prefecture = Prefecture.find_by(id: params[:id]).child_ids
       if prefecture.empty?
         @tweets = Tweet.where(prefecture_id: @prefecture.id).order(created_at: :desc)
@@ -89,19 +86,17 @@ class Public::TweetsController < ApplicationController
   def find_item(prefecture)
     prefecture.each do |id|
       tweet_array = Tweet.where(prefecture_id: id).order(created_at: :desc)
-      if tweet_array.present?
-        tweet_array.each do |tweet|
-          if tweet.present?
-            @tweets.push(tweet)
-          end
-        end
+      next unless tweet_array.present?
+
+      tweet_array.each do |tweet|
+        @tweets.push(tweet) if tweet.present?
       end
     end
   end
 
   def get_prefecture_children
     @prefecture_children = Prefecture.find("#{params[:parent_id]}").children
-    render json: @prefecture_children.map {|child| { id: child.id, name: child.name}}
+    render json: @prefecture_children.map { |child| { id: child.id, name: child.name } }
   end
 
   private
@@ -111,7 +106,6 @@ class Public::TweetsController < ApplicationController
   end
 
   def tweet_params
-    params.require(:tweet).permit(:title, :body, :image,:prefecture_id,)
+    params.require(:tweet).permit(:title, :body, :image, :prefecture_id)
   end
-
 end

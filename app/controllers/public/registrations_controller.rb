@@ -38,8 +38,8 @@ class Public::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  def after_sign_up_path_for(resource)
-      tweets_path
+  def after_sign_up_path_for(_resource)
+    tweets_path
   end
 
   def guest_sign_up

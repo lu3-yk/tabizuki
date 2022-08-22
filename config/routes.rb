@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
-
-# ログイン関係
+  # ログイン関係
   # URL /user/sign_in ...
-  devise_for :user,skip: [:passwords], controllers: {
-    registrations: "public/registrations",
+  devise_for :user, skip: [:passwords], controllers: {
+    registrations: 'public/registrations',
     sessions: 'public/sessions'
   }
   devise_scope :user do
@@ -12,45 +11,42 @@ Rails.application.routes.draw do
   end
 
   # URL /admin/sign_in ...
-  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
-    sessions: "admin/sessions"
+  devise_for :admin, skip: %i[registrations passwords], controllers: {
+    sessions: 'admin/sessions'
   }
 
-
-#会員関係
+  # 会員関係
   scope module: :public do
-   root :to =>"homes#top"
+    root to: 'homes#top'
     get '/users/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
     patch '/users/withdrawal' => 'users#withdrawal', as: 'withdrawal'
-   resources :users do
-    get 'likes', on: :member
-    get :follows, :followers, on: :member
-    resource :relationships, only: [:create, :destroy]
-   end
-   resources :tweets do
-     resources :comments,only: [:create, :destroy]
-     resource :likes,only:[:create, :destroy]
-     get 'search', on: :member
-     collection do
-       get 'get_prefecture_children', defaults: { format: 'json' }
-     end
-   end
+    resources :users do
+      get 'likes', on: :member
+      get :follows, :followers, on: :member
+      resource :relationships, only: %i[create destroy]
+    end
+    resources :tweets do
+      resources :comments, only: %i[create destroy]
+      resource :likes, only: %i[create destroy]
+      get 'search', on: :member
+      collection do
+        get 'get_prefecture_children', defaults: { format: 'json' }
+      end
+    end
   end
 
-#管理者関係
+  # 管理者関係
   namespace :admin do
     resources :users do
       member do
         get :unsubscribe
         patch :withdrawal
       end
-    end  
+    end
     #   get :unsubscribe, on: :member
     #   get :withdrawal, on: :member
     # end
     # get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
     # patch '/users/:id/withdrawal' => 'users#withdrawal', as: 'withdrawal'
   end
-
-
 end
