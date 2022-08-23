@@ -41,7 +41,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
   def after_sign_up_path_for(_resource)
     tweets_path
   end
-
+  #ゲストログイン機能
   def guest_sign_up
     user = User.guest
     sign_in user
