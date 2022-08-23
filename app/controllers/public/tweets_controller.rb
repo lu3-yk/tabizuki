@@ -86,6 +86,7 @@ class Public::TweetsController < ApplicationController
   def find_item(prefecture)
     prefecture.each do |id|
       tweet_array = Tweet.where(prefecture_id: id).order(created_at: :desc)
+      tweet_array = tweet_array.where(user_id: params[:user_id]) if params[:user_id]
       next unless tweet_array.present?
 
       tweet_array.each do |tweet|

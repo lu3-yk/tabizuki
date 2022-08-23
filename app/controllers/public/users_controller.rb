@@ -49,6 +49,9 @@ class Public::UsersController < ApplicationController
     @user.update(is_deleted: true)
     @user.tweets.destroy_all
     @user.comments.destroy_all
+    @user.follower.destroy_all
+    @user.followed.destroy_all
+    @user.likes.destroy_all
     reset_session
     flash[:notice] = 'ご利用ありがとうございました。'
     redirect_to root_path

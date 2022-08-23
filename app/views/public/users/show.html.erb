@@ -12,7 +12,7 @@
             <ul class="prefectureTree">
               <% @parents.each do |parent| %>
                 <li class="prefecture_parent">
-                  <%= link_to search_tweet_path(parent) do %>
+                  <%= link_to search_tweet_path(parent, user_id: @user.id) do %>
                     <input type="button" value="<%= parent.name %>" name="<%= parent.id %>" class="parent_btn">
                   <% end %>
                 </li>
