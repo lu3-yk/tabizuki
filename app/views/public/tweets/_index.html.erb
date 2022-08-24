@@ -12,7 +12,7 @@
             <div class="row">
               <div class="col-12 col-md-3 text-center">
                 <%= link_to user_path(tweet.user.id) do %>
-                  <%= image_tag tweet.user.get_profile_image(50,50), class: "user-icon" %><br>
+                  <%= image_tag tweet.user.get_profile_image(150,150), class: "user-icon" %><br>
                   <div class="h4 mt-2 text-dark">
                     <%= tweet.user.name %>
                   </div>
