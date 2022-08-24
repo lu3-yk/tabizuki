@@ -11,13 +11,13 @@
           <div class="card shadow">
             <div class="text-center mt-2">
               <%= link_to tweet_path(tweet.id) do %>
-                <%= image_tag tweet.get_image(260,240) %>
+                <%= image_tag tweet.get_image(400,400),size: "260x260"  %>
               <% end %>
             </div>
             <div class="card-body">
               <h6 class="card-title text-left">
                 <%= link_to user_path(tweet.user.id) do %>
-                  <%= image_tag tweet.user.get_profile_image(50,50), class: "user-icon" %>
+                  <%= image_tag tweet.user.get_profile_image(150,150), class: "user-icon" %>
                   <%= tweet.user.name %>
                 <% end %>
               </h6>
