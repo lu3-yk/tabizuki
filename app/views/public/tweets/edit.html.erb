@@ -7,14 +7,14 @@
   <div class="row my-5 tweet-edit">
     <div class="col-sm-6">
       <div class="mb-2 text-center">
-        <%= image_tag @tweet.get_image(380, 380), style: "width: 100%;" %>
+        <%= image_tag @tweet.get_image(400, 400), style: "width: 100%;" %>
       </div>
     </div>
     <div class="col-sm-6">
       <%= form_with model: @tweet do |f| %>
         <!--エラーメッセージ-->
         <%= render 'layouts/error_message', model: f.object %>
-        <table class="table text-center table-row">
+        <table class="table text-center table-borderless table-row">
           <tr>
             <th><%= f.label :都道府県を編集 %></th>
             <td>
