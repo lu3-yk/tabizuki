@@ -7,6 +7,7 @@ class Admin::UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    redirect_to admin_users_path, notice: 'guestuserはプロフィール編集画面へ遷移できません。' if @user.name == 'guestuser'
   end
 
   def show
