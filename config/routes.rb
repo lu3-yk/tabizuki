@@ -43,10 +43,5 @@ Rails.application.routes.draw do
         patch :withdrawal
       end
     end
-    #   get :unsubscribe, on: :member
-    #   get :withdrawal, on: :member
-    # end
-    # get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
-    # patch '/users/:id/withdrawal' => 'users#withdrawal', as: 'withdrawal'
   end
 end
