@@ -100,6 +100,11 @@ class Public::TweetsController < ApplicationController
     render json: @prefecture_children.map { |child| { id: child.id, name: child.name } }
   end
 
+  def japan_map
+     @prefectures = Prefecture.where("id > 7") # 北海道～沖縄
+     @prefecture = Prefecture.find_by(id: params[:id])
+  end
+
   def ensure_correct_user
     @tweet = Tweet.find(params[:id])
     redirect_to tweets_path if @tweet.user != current_user

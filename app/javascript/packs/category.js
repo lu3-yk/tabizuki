@@ -1,6 +1,5 @@
 $(document).on('turbolinks:load', function() {
 $(function(){
-  console.log('hello')
   function appendOption(prefecture){
     var html = `<option value="${prefecture.id}">${prefecture.name}</option>`;
     return html;

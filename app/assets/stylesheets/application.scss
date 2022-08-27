@@ -155,6 +155,10 @@ th {
   	display:flex;
     flex-flow: column;
   }
+  // 表示できないようにしたい
+#categoBtn{
+    display:none
+  }
 }
 // 文字・ボタンサイズ
 .h2 {

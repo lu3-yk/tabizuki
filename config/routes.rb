@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get '/users/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
     patch '/users/withdrawal' => 'users#withdrawal', as: 'withdrawal'
+    get "tweets/japan_map"=>"tweets#japan_map"
     resources :users do
       get 'likes', on: :member
       get :follows, :followers, on: :member
