@@ -14,11 +14,11 @@
     </div>
   </div>
   <div class="row justify-content-center my-3">
-    <div class="col-10">
+    <div class="col-9">
       <div style="width:100%;" >
         <% @prefectures.each_with_index do |prefecture, index| %>
           <%= link_to search_tweet_path(prefecture.id),data: {"turbolinks" => false} do %>
-            <%= index+1 %>.<%= prefecture.name %>
+            <% index+1 %>&ensp;<%= prefecture.name %>
           <% end %>
         <% end %>
       </div>
@@ -32,7 +32,7 @@
       <script>
       let areaLinks = {
         <% @prefectures.each_with_index do |prefecture, index|%>
-          <%=index+1%> : "<%=search_tweet_path(prefecture.id) %>", // <%=prefecture.id %>
+          <%=index+1%> : "<%=search_tweet_path(prefecture.id) %>", // <%=prefecture.name %>
         <%end%>
       };
       areas = [
@@ -132,4 +132,3 @@
       </script>
   </div>
 </div>
-
