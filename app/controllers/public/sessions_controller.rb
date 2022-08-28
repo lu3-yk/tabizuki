@@ -41,7 +41,6 @@ class Public::SessionsController < Devise::SessionsController
     @user = User.find_by(email: params[:user][:email])
     ## アカウントを取得できなかった場合、このメソッドを終了する
     return unless @user
-
     ## 【処理内容2】 取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別
     if @user.valid_password?(params[:user][:password]) && @user.is_deleted
       flash[:error] = '退会済みです。新規会員登録を行なってください。'
