@@ -49,4 +49,4 @@ tabizukiを利用することで楽しい旅行計画の役に立ったり、行
 - IDE：Cloud9
 
 ## 使用素材
-- 使用検討中です。
+- [日本地図の表示](https://unpkg.com/japan-map-js@1.0.1/dist/jpmap.min.js)
