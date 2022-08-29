@@ -7,9 +7,10 @@
          <i class="far fa-user"></i>へ
         <% end %>
       </div>
-      <div class="my-5">
-        <%= link_to tweets_japan_map_path,class: 'text-primary japan-map',data: {"turbolinks" => false} do %>
-         日本地図<i class="fas fa-map-marked"></i>
+      <div class="searchbox my-5">
+        <%= search_form_for @search, url: tweets_path do |f| %>
+          <%= f.text_field :title_or_body_or_user_name_or_prefecture_name_cont,placeholder: 'キーワードを入力' %>
+          <%= f.submit ("検索") , class: 'btn btn-outline-dark btn-sm'%>
         <% end %>
       </div>
       <div class="item-categories">

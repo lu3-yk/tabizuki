@@ -2,6 +2,7 @@ class Public::TweetsController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: %i[edit update destroy]
   before_action :set_parents, only: %i[index new create edit update]
+  before_action :set_search
 
   def new
     @tweet = Tweet.new
@@ -103,6 +104,11 @@ class Public::TweetsController < ApplicationController
   def japan_map
      @prefectures = Prefecture.where("id > 7") # 北海道～沖縄
      @prefecture = Prefecture.find_by(id: params[:id])
+  end
+  
+  def set_search
+    @search = Tweet.ransack(params[:q])
+    @search_tweet = @search.result.page(params[:page]).order(created_at: :desc) if params[:q]
   end
 
   def ensure_correct_user

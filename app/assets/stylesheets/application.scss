@@ -80,7 +80,10 @@ body{
 .comment{
   color: #333333
 }
-
+// マップロゴ
+.map{
+  color: #eb6ea0;
+}
 
 .delete-btn{
   padding:8px;
@@ -129,7 +132,7 @@ th {
 }
 // 投稿一覧ページスクロール
 .scroll{
-  height: 550px;
+  height: 600px;
   overflow:auto;
 }
 
