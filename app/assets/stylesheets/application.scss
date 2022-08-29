@@ -127,6 +127,11 @@ th {
 .background-navbar {
   background-color: #E0E0E0;
 }
+// 投稿一覧ページスクロール
+.scroll{
+  height: 550px;
+  overflow:auto;
+}
 
 // レスポンシブ対応
 @media (min-width: 768px) {

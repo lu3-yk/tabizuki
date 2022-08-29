@@ -59,7 +59,7 @@ gem 'ancestry'
 gem 'devise'
 gem 'devise-i18n-views', '~> 0.3.7'
 gem 'jquery-rails'
-gem 'kaminari'
+gem 'kaminari','~> 1.2.1'
 gem 'rails-i18n'
 gem 'ransack'
 

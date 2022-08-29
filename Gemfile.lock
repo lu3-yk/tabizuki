@@ -307,7 +307,7 @@ DEPENDENCIES
   image_processing (~> 1.2)
   jbuilder (~> 2.7)
   jquery-rails
-  kaminari
+  kaminari (~> 1.2.1)
   listen (~> 3.3)
   mysql2
   net-imap
