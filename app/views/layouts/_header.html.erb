@@ -1,15 +1,15 @@
-<header class="shadow-sm">
-  <nav class="navbar navbar-expand-lg navbar-light">
-    <div class="container">
-      <a class="navbar-brand" href="/"><span><%= image_tag 'logo.png',size: "200x100" %>︎</span></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-        <% if user_signed_in? %>
-        <!--会員サインイン済み  -->
+<% if user_signed_in? %>
+<!--会員サインイン済み  -->
+  <header class="shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container">
+        <a class="navbar-brand" href="/"><span><%= image_tag 'logo.png',size: "200x100" %>︎</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="collapse navbar-collapse background-navbar" id="navbarNavDropdown" style="z-index: 3;">
           <ul class="navbar-nav ml-auto mr-auto">
-
+      
           <div class="d-flex align-items-center mr-5">ようこそ、<%= current_user.name %>さん</div>
           <li class="nav-item text-center mr-2">
             <%= link_to user_path(current_user.id),class: 'nav-link text-dark' do %>
@@ -33,48 +33,67 @@
           </li>
           </ul>
           </div>
-            <%= link_to tweets_japan_map_path,class: 'btn btn-light border border-info japan-map ml-4',data: {"turbolinks" => false} do %>
-             日本地図から探す<i class="fas fa-map-marked map"></i>
-            <% end %>
-
-        <% elsif admin_signed_in? %>
+          <%= link_to tweets_japan_map_path,class: 'btn btn-light border border-info japan-map ml-4',data: {"turbolinks" => false} do %>
+           日本地図から探す<i class="fas fa-map-marked map"></i>
+          <% end %>
+      </div>
+    </nav>
+  </header>
+<% elsif admin_signed_in? %>
+<!--管理者ログイン済み  -->
+  <header class="shadow-sm header_admin">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container">
+        <a class="navbar-brand" href="/"><span><%= image_tag 'logo.png',size: "200x100" %>︎</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="collapse navbar-collapse background-navbar" id="navbarNavDropdown" style="z-index: 3;">
-        <ul class="navbar-nav ml-auto mr-auto">
-        <!--管理者ログイン済み  -->
-          <li class="nav-item text-center  mt-2 mr-2">
-            <%= link_to admin_users_path, class: 'nav-link text-dark' do %>
-             会員一覧<br><i class="fas fa-users"></i>
-            <% end %>
-          </li>
-          <li class="nav-item text-center  mt-2 mr-2">
-            <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' do %>
-              ログアウト<br><i class="fas fa-sign-out-alt"></i>
-            <% end %>
-          </li>
-        </ul>
-        </div>
-        <% else %>
-        <div class="collapse navbar-collapse background-navbar" id="navbarNavDropdown" style="z-index: 3;">
-        <ul class="navbar-nav ml-auto mr-auto">
-        <!--会員サインイン前-->
-          <li class="nav-item text-center mr-2">
-            <%= link_to root_path, class: 'nav-link text-dark' do %>
-              HOME<br><i class="fas fa-home"></i>
-            <% end %>
-          </li>
-          <li class="nav-item text-center mr-2">
-            <%= link_to new_user_registration_path, class: 'nav-link text-dark' do %>
-              新規登録<br><i class="fas fa-user-plus"></i>
-            <% end %>
-          </li>
-          <li class="nav-item text-center">
-            <%= link_to new_user_session_path, class: 'nav-link text-dark' do %>
-              ログイン<br><i class="fas fa-sign-in-alt"></i>
-            <% end %>
-          </li>
+          <ul class="navbar-nav ml-auto mr-auto">
+            <li class="nav-item text-center  mt-2 mr-2">
+              <%= link_to admin_users_path, class: 'nav-link text-dark' do %>
+               会員一覧<br><i class="fas fa-users"></i>
+              <% end %>
+            </li>
+            <li class="nav-item text-center  mt-2 mr-2">
+              <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' do %>
+                ログアウト<br><i class="fas fa-sign-out-alt"></i>
+              <% end %>
+            </li>
           </ul>
         </div>
-        <% end %>
-    </div>
-  </nav>
-</header>
+      </div>
+    </nav>
+  </header>
+<% else %>
+  <header class="shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container">
+        <a class="navbar-brand" href="/"><span><%= image_tag 'logo.png',size: "200x100" %>︎</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse background-navbar" id="navbarNavDropdown" style="z-index: 3;">
+          <ul class="navbar-nav ml-auto mr-auto">
+          <!--会員サインイン前-->
+            <li class="nav-item text-center mr-2">
+              <%= link_to root_path, class: 'nav-link text-dark' do %>
+                HOME<br><i class="fas fa-home"></i>
+              <% end %>
+            </li>
+            <li class="nav-item text-center mr-2">
+              <%= link_to new_user_registration_path, class: 'nav-link text-dark' do %>
+                新規登録<br><i class="fas fa-user-plus"></i>
+              <% end %>
+            </li>
+            <li class="nav-item text-center">
+              <%= link_to new_user_session_path, class: 'nav-link text-dark' do %>
+                ログイン<br><i class="fas fa-sign-in-alt"></i>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+<% end %>

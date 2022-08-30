@@ -92,6 +92,7 @@ body{
 
 
 // ヘッダー/フッター
+// 会員側
 header {
   width: 100%;
   height: 110px;
@@ -99,13 +100,31 @@ header {
   background-size: cover;
   background-position: 20% 10%;
 }
-
+// 管理者側
+header.header_admin {
+  width: 100%;
+  height: 110px;
+  background-image: image_url('sky-pink.png');
+  background-size: cover;
+  background-position: 10% 93%;
+}
+// 会員側
 .footer{
   width: 100%;
   height: 100px;
   background-image: image_url('sky.jpg');
   background-size: cover;
   background-position: 20% 80%;
+  position: absolute;
+  bottom: 0;
+}
+// 管理者側
+footer.footer_admin{
+  width: 100%;
+  height: 100px;
+  background-image: image_url('sky-pink.png');
+  background-size: cover;
+  background-position: 20% 60%;
   position: absolute;
   bottom: 0;
 }
