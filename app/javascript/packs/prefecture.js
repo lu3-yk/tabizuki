@@ -28,13 +28,11 @@ $(document).on('turbolinks:load', function() {
   }
 
   // 子カテゴリーを表示
-  $('.parent_btn').hover(function () {
-    $('.parent_btn').css('color', '');
-    $('.parent_btn').css('background-color', '');
+  $('.parent_btn').hover(function() {
     let prefectureParent = $(this).attr('name');
     let user_id = $('#user_id').html();
     console.log("user_id:" + user_id);
-    timeParent = setTimeout(function () {
+    timeParent = setTimeout(function() {
       // http://??????/tweets/?parent_id=prefectureParent&user_id=
       $.ajax({
           url: '/tweets',
@@ -45,20 +43,20 @@ $(document).on('turbolinks:load', function() {
           },
           dataType: 'json'
         })
-        .done(function (data) {
+        .done(function(data) {
           $(".prefecture_child").remove();
           $('.prefectureTree-child').show();
-          data.forEach(function (child) {
+          data.forEach(function(child) {
             let child_html = childBuild(child)
             $(".prefectureTree-child").append(child_html);
           });
           $('#tree_menu').css('max-height', '300px');
         })
-        .fail(function () {
+        .fail(function() {
           alert("カテゴリーを選択してください");
         });
     }, 400)
-  }, function () {
+  }, function() {
     clearTimeout(timeParent);
   });
 
