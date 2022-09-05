@@ -1,4 +1,4 @@
-![IMG_2007](https://user-images.githubusercontent.com/106656539/188362221-c189f6d8-340a-4ca8-8a6c-7929d67c62d4.PNG)
+<img src="https://user-images.githubusercontent.com/106656539/188362221-c189f6d8-340a-4ca8-8a6c-7929d67c62d4.PNG" width="250px">
 ## サイト概要
 行ってみたい場所を都道府県ごとで管理でき、共有しあえるSNSサイトです。
 
