@@ -42,8 +42,7 @@ tabizukiを利用することで楽しい旅行計画の役に立ったり、行
 <投稿一覧ページ>
 <img width="1426" alt="スクリーンショット 2022-09-10 17 02 23" src="https://user-images.githubusercontent.com/106656539/189474791-174c96fd-a3d7-4b0d-b7d3-71170b25b816.png">
 <日本地図から行きたい場所を探す>
-<img width="1430" alt="スクリーンショット 2022-09-10 17 00 08" src="https://user-images.githubusercontent.com/106656539/189474793-9b9020b8-5ebb-438d-9a2f-558513cab18d.png">
-
+<img width="842" alt="スクリーンショット 2022-09-10 17 07 26" src="https://user-images.githubusercontent.com/106656539/189474913-7c645148-8b58-4863-a211-6a69d7323e5b.png">
 ## 設計書
 ・ER図![tabizuki drawio (3)](https://user-images.githubusercontent.com/106656539/183300567-a4e73bc0-40d1-4212-96d9-9f0af6fdc44b.png)<br>
 ・[テーブル定義書](https://docs.google.com/spreadsheets/d/1UC2u-qosewQDyae69rTYNQtA-eUjlb6oKlf5rIkzgLM/edit?usp=sharing)<br>
