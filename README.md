@@ -1,7 +1,6 @@
 <img src="https://user-images.githubusercontent.com/106656539/188362221-c189f6d8-340a-4ca8-8a6c-7929d67c62d4.PNG" width="250px">
 
 ### 【サイト概要】
-<img width="1433" alt="スクリーンショット 2022-09-10 17 01 06" src="https://user-images.githubusercontent.com/106656539/189474790-57224321-96c3-48e3-a642-a2aed9d7c717.png">
 行ってみたい場所を都道府県ごとで管理でき、共有しあえるSNSサイトです。
 
 特徴①　〜行ってみたい場所を管理できる〜<br>
@@ -14,6 +13,7 @@
 
 tabizukiを利用することで楽しい旅行計画の役に立ったり、行きたい場所を沢山増やしてワクワクしたり、旅好きの皆さんで様々な場所を共有し繋がりあえることができたら幸いです。
 
+<img width="1433" alt="スクリーンショット 2022-09-10 17 01 06" src="https://user-images.githubusercontent.com/106656539/189474790-57224321-96c3-48e3-a642-a2aed9d7c717.png">
 ### 【サイトテーマ】
 行ってみたい場所を都道府県ごとで管理でき、共有しあえるSNSサイト。
 
@@ -41,7 +41,7 @@ tabizukiを利用することで楽しい旅行計画の役に立ったり、行
 ### 【サイトの一部抜粋】
 <投稿一覧ページ>
 <img width="1426" alt="スクリーンショット 2022-09-10 17 02 23" src="https://user-images.githubusercontent.com/106656539/189474791-174c96fd-a3d7-4b0d-b7d3-71170b25b816.png">
-<日本地図から行きたい場所を探す>
+<日本地図から行きたい場所を探す場合>
 <img width="842" alt="スクリーンショット 2022-09-10 17 07 26" src="https://user-images.githubusercontent.com/106656539/189474913-7c645148-8b58-4863-a211-6a69d7323e5b.png">
 ## 設計書
 ・ER図![tabizuki drawio (3)](https://user-images.githubusercontent.com/106656539/183300567-a4e73bc0-40d1-4212-96d9-9f0af6fdc44b.png)<br>
