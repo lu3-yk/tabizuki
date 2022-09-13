@@ -4,6 +4,7 @@ class Tweet < ApplicationRecord
   belongs_to :prefecture
   has_many :comments, dependent: :destroy
   has_many :likes,    dependent: :destroy
+  has_one :activity, as: :subject, dependent: :destroy
 
   # バリデーション
   validates :image,         presence: true

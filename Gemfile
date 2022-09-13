@@ -62,6 +62,7 @@ gem 'jquery-rails'
 gem 'kaminari','~> 1.2.1'
 gem 'rails-i18n'
 gem 'ransack'
+gem "enum_help"
 
 gem 'net-imap'
 gem 'net-pop'

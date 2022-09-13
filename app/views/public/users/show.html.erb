@@ -73,9 +73,12 @@
 
       <!-- ユーザーの投稿一覧 -->
       <div class="d-flex align-content-around flex-wrap col-md-9 col-sm-12 col-12 px-5">
+        <% if user_signed_in? && @user == current_user %>
+          <%= link_to "通知一覧",user_activities_path(@user.id) %>
+        <% end %>  
         <% if @tweets.exists? %>
             <% @tweets.each do |tweet| %>
-              <div class="card-deck mr-1 mb-1" style="width:320px;">
+              <div class="card-deck mr-1 mb-1 mt-5" style="width:320px;">
                 <div class="card shadow">
                   <div class="text-center mt-2">
                     <%= link_to tweet_path(tweet.id) do %>

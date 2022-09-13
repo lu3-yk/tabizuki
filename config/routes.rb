@@ -21,10 +21,13 @@ Rails.application.routes.draw do
     get '/users/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
     patch '/users/withdrawal' => 'users#withdrawal', as: 'withdrawal'
     get "tweets/japan_map"=>"tweets#japan_map"
-    resources :users do
+      resources :users do
       get 'likes', on: :member
       get :follows, :followers, on: :member
       resource :relationships, only: %i[create destroy]
+      resources :activities, only: [:index] do
+        patch :read, on: :member
+      end
     end
     resources :tweets do
       resources :comments, only: %i[create destroy]
