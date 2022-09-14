@@ -9,13 +9,19 @@
       <% if @activities.present? %>
         <% @activities.each do |activity| %>
           <% if activity.read? %>
-           <%= link_to read_user_activity_path(current_user,activity), method: :patch, class: "text-muted" do %>
-              <%= image_tag activity.subject.user.get_profile_image(150,150),class: "user-icon my-1" %>&nbsp;<%= activity.subject.name %>さんが<%= activity.action_type_i18n %>&emsp;
+            <%= link_to user_path(activity.subject.user.id) do %>
+              <%= image_tag activity.subject.user.get_profile_image(150,150),class: "user-icon my-1" %>&emsp;
+            <% end %>
+            <%= link_to read_user_activity_path(current_user,activity), method: :patch, class: "text-muted" do %>
+              <%= activity.subject.name %>さんが&nbsp;<%= activity.action_type_i18n %>&emsp;
               <i class="fas fa-history"></i>&nbsp;<%= activity.created_at.strftime('%Y/%m/%d %H:%M') %><br>
             <% end %>
           <% else %>
+            <%= link_to user_path(activity.subject.user.id) do %>
+              <%= image_tag activity.subject.user.get_profile_image(150,150),class: "user-icon my-1" %>&emsp;
+            <% end %>
             <%= link_to read_user_activity_path(current_user,activity), method: :patch do %>
-              <%= image_tag activity.subject.user.get_profile_image(150,150),class: "user-icon my-1" %>&nbsp;<%= activity.subject.name %>さんが<%= activity.action_type_i18n %>&emsp;
+              <%= activity.subject.name %>さんが&nbsp;<%= activity.action_type_i18n %>&emsp;
               <i class="fas fa-history"></i>&nbsp;<%= activity.created_at.strftime('%Y/%m/%d %H:%M') %><br>
             <% end %>
           <% end %>
