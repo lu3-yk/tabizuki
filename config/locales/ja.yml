@@ -23,3 +23,10 @@ ja:
         liked_to_tweet: "あなたの投稿にいいねしました"
         followed_me: 'あなたをフォローしました'
         commented_to_tweet: 'あなたの投稿にコメントしました'
+  views:
+    pagination:
+      first: <i class="fas fa-angle-double-left"></i>
+      last: <i class="fas fa-angle-double-right"></i>
+      previous: <i class="fas fa-angle-left"></i>
+      next: <i class="fas fa-angle-right"></i>
+      truncate: "..."

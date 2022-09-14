@@ -15,7 +15,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   # バリデーション
-  validates :name, presence: true, length: { maximum: 20, minimum: 2 }
+  validates :name, presence: true, length: { maximum: 15, minimum: 2 }
   validates :email, presence: true
   validates :introduction, length: { maximum: 100 }
 

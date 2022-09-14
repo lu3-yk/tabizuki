@@ -9,8 +9,8 @@
         </button>
         <div class="collapse navbar-collapse background-navbar" id="navbarNavDropdown" style="z-index: 3;">
           <ul class="navbar-nav ml-auto mr-auto">
-      
-          <div class="d-flex align-items-center mr-5">ようこそ、<%= current_user.name %>さん</div>
+
+          <div class="d-flex align-items-center mr-5">ようこそ<br><%= current_user.name %>さん</div>
           <li class="nav-item text-center mr-2">
             <%= link_to user_path(current_user.id),class: 'nav-link text-dark' do %>
               マイページ<br><%= image_tag current_user.get_profile_image(150,150), class: "user-icon" %>

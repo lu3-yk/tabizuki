@@ -1,17 +1,17 @@
-<div class="container-fluid">
+<div class="container">
   <div class="row mt-4">
     <div class="col-12">
       <h2 class="text-center"><i class="fas fa-heart heart"></i>をした投稿一覧</h2>
     </div>
   </div>
   <div class="row mt-2">
-    <div class="d-flex justify-content-center flex-wrap flex-row col">
+    <div class="col d-flex align-content-around flex-wrap">
       <% @like_tweets.each do |tweet| %>
-        <div class="card-deck ml-1 mb-1" style="width:310px;">
+        <div class="card-deck ml-1 mb-1" style="width:280px;">
           <div class="card shadow">
             <div class="text-center mt-2">
               <%= link_to tweet_path(tweet.id) do %>
-                <%= image_tag tweet.get_image(400,400),size: "260x260"  %>
+                <%= image_tag tweet.get_image(400,400),size: "240x240"  %>
               <% end %>
             </div>
             <div class="card-body">
@@ -44,4 +44,7 @@
       <% end %>
     </div>
   </div>
+</div>
+<div class="paginate mt-4">
+  <%= paginate @like_tweets %>
 </div>

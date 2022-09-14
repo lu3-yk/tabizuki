@@ -8,6 +8,7 @@ class Activity < ApplicationRecord
   enum action_type: {
     liked_to_tweet: 0,followed_me: 1,commented_to_tweet: 2
   }
+  enum read: { unread: false, read: true }
 
   # リダイレクトのパスをenumをもとにして生成する
   def redirect_path

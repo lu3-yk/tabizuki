@@ -37,7 +37,8 @@ class Public::UsersController < ApplicationController
 
   def likes
     likes = Like.where(user_id: @user.id).pluck(:tweet_id)
-    @like_tweets = Tweet.find(likes)
+    like_tweets = Tweet.find(likes)
+    @like_tweets = Kaminari.paginate_array(like_tweets).page(params[:page]).per(8)
   end
 
   def unsubscribe

@@ -4,7 +4,7 @@
       <h2 class="text-center">通知一覧</h2>
     </div>
   </div>
-  <div class="row mx-auto">
+  <div class="row ml-md-5">
     <div class="col-md-12 col-sm-5">
       <% if @activities.present? %>
         <% @activities.each do |activity| %>
@@ -26,7 +26,9 @@
             <% end %>
           <% end %>
         <% end %>
-        <%= paginate @activities %>
+        <div class="paginate mt-4">
+          <%= paginate @activities %>
+        </div>
       <% else %>
         <p class="text-center mt-3">通知はありません</p>
       <% end %>
