@@ -1,88 +1,95 @@
-<div class="container-fluid">
-    <div class="row justify-content-center">
-      <div class="col-md-3 col-sm-12 col-12 px-5">
-        <div class="item-categories mt-4 text-center">
-        <!--都道府県カテゴリー-->
-        <div id="user_id" style="display: none;"><%= @user.id %></div>
-        <div data-user-id=<%= @user.id %> id="user-id"></div>
-          <%= link_to  user_path(@user.id), class: "btn btn-outline-info japan_map", id: 'categoBtn' do %>
-            都道府県別でみる
-          <% end %>
-          <div id="tree_menu">
-            <ul class="prefectureTree">
-              <% @parents.each do |parent| %>
-                <li class="prefecture_parent">
-                  <%= link_to search_tweet_path(parent, user_id: @user.id) do %>
-                    <input type="button" value="<%= parent.name %>" name="<%= parent.id %>" class="parent_btn">
-                  <% end %>
-                </li>
+<div class="container">
+  <div class="row">
+    <div class="col-6 text-center">
+      <!-- ユーザーの詳細 -->
+      <table class="table table-borderless text-center mt-4", style="background-color: #f7f6fb">
+        <tr>
+          <td colspan=2>
+            <%= image_tag @user.get_profile_image(150,150), class: "user-icon-mypage" %>
+          </td>
+        <tr class="h3">
+          <td colspan=2><%= @user.name %></td>
+        </tr>
+        <tr>
+          <td colspan=2><%= @user.introduction %></td>
+        </tr>
+        <tr>
+          <td>
+            <div id="following-count-<%= @user.id %>">
+             <%= link_to follows_user_path(@user),class: 'text-dark' do %>
+              　フォロー<%= @following_users.count %>
+             <% end %>&emsp;
+            </div>
+            <div id="follower-count-<%= @user.id %>">
+             <%= link_to followers_user_path(@user),class: 'text-dark' do %>
+              フォロワー<%= @follower_users.count %>
+             <% end %>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan=2>
+            <% if user_signed_in? && @user == current_user %>
+              <%= link_to edit_user_path(current_user.id),class: 'text-secondary' do %>
+                プロフィール編集<i class="fas fa-cog"></i>
               <% end %>
-            </ul>
-            <ul class="prefectureTree-child"></ul>
+            <% end %>
+            <!--フォローボタン  -->
+            <div id="follow-btn-<%= @user.id %>">
+              <%= render "public/relationships/follow_btn", user: @user %>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-5">
+      <div class="row mx-auto" style="width: 200px;">
+        <div class="col mt-4 text-center">
+            <%= link_to user_activities_path(@user.id),class: 'text-dark' do %>
+              通知一覧&nbsp;<i class="fas fa-bell bell"></i>
+            <% end %>
           </div>
         </div>
-
-        <!-- ユーザーの詳細 -->
-        <table class="table table-borderless text-center mt-4", style="background-color: #f7f6fb">
-          <tr>
-            <td colspan=2>
-              <%= image_tag @user.get_profile_image(150,150), class: "user-icon-mypage" %>
-            </td>
-          <tr class="h3">
-            <td colspan=2><%= @user.name %></td>
-          </tr>
-          <tr>
-            <td colspan=2><%= @user.introduction %></td>
-          </tr>
-          <tr colspan=2>
-            <td>
-              <%= link_to likes_user_path(@user),class: 'text-dark' do %>
-                <i class="fas fa-heart fa-2x heart"></i>をした投稿一覧
-              <% end %>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div id="following-count-<%= @user.id %>">
-               <%= link_to follows_user_path(@user),class: 'text-dark' do %>
-                　フォロー<%= @following_users.count %>
-               <% end %>&emsp;
-              </div>
-              <div id="follower-count-<%= @user.id %>">
-               <%= link_to followers_user_path(@user),class: 'text-dark' do %>
-                フォロワー<%= @follower_users.count %>
-               <% end %>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td colspan=2>
-              <% if user_signed_in? && @user == current_user %>
-                <%= link_to edit_user_path(current_user.id),class: 'text-dark' do %>
-                  プロフィール編集<i class="fas fa-cog"></i>
+        <div class="row mx-auto" style="width: 200px;">
+          <div class="col mt-4 text-center">
+            <%= link_to likes_user_path(@user),class: 'text-dark' do %>
+              いいね一覧&nbsp;<i class="fas fa-heart heart"></i>
+            <% end %>
+          </div>
+        </div>
+      <!--都道府県カテゴリー-->
+      <div class="row mx-auto" style="width: 200px;">
+        <div class="col mt-4">
+          <div id="user_id" style="display: none;"><%= @user.id %></div>
+          <div data-user-id=<%= @user.id %> id="user-id"></div>
+            <%= link_to  user_path(@user.id), class: "btn btn-outline-info japan_map", id: 'categoBtn' do %>
+              行ってみたい場所を都道府県別でみる
+            <% end %>
+            <div id="tree_menu">
+              <ul class="prefectureTree">
+                <% @parents.each do |parent| %>
+                  <li class="prefecture_parent">
+                    <%= link_to search_tweet_path(parent, user_id: @user.id) do %>
+                      <input type="button" value="<%= parent.name %>" name="<%= parent.id %>" class="parent_btn">
+                    <% end %>
+                  </li>
                 <% end %>
-              <% end %>
-              <!--フォローボタン  -->
-              <div id="follow-btn-<%= @user.id %>">
-                <%= render "public/relationships/follow_btn", user: @user %>
-              </div>
-            </td>
-          </tr>
-        </table>
+              </ul>
+              <ul class="prefectureTree-child"></ul>
+            </div>
+        </div>
       </div>
-
+    </div>
       <!-- ユーザーの投稿一覧 -->
-      <div class="d-flex align-content-around flex-wrap col-md-9 col-sm-12 col-12 px-5">
-        <% if user_signed_in? && @user == current_user %>
-          <%= link_to "通知一覧",user_activities_path(@user.id) %>
-        <% end %>  
+    <div class="row mt-3">
+      <div class="col d-flex align-content-around flex-wrap">
         <% if @tweets.exists? %>
             <% @tweets.each do |tweet| %>
-              <div class="card-deck mr-1 mb-1 mt-5" style="width:320px;">
+              <div class="card-deck mr-1 mb-1" style="width:295px;">
                 <div class="card shadow">
-                  <div class="text-center mt-2">
+                  <div class="text-center m-1">
                     <%= link_to tweet_path(tweet.id) do %>
-                      <%= image_tag tweet.get_image(400,400), size: "270x270" %>
+                      <%= image_tag tweet.get_image(400,400), size: "250x260" %>
                     <% end %>
                   </div>
                   <div class="card-body">
@@ -97,7 +104,8 @@
             <div class="text-center col-9">投稿はありません</div>
         <% end %>
       </div>
-      <div class="mt-3">
-        <%= paginate @tweets %>
-      </div>
+    </div>
+</div>
+<div class="paginate mt-4">
+  <%= paginate @tweets %>
 </div>

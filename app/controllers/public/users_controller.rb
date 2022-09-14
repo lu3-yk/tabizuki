@@ -7,7 +7,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @tweets = @user.tweets.order(created_at: :desc).page(params[:page]).per(6)
+    @tweets = @user.tweets.order(created_at: :desc).page(params[:page]).per(8)
     @following_users = @user.following_user
     @follower_users = @user.follower_user
   end

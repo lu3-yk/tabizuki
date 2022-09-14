@@ -17,3 +17,9 @@ ja:
         body: 詳細コメント
         prefecture: 都道府県名
         image: 写真
+  enums:
+    activity:
+      action_type:
+        liked_to_tweet: "あなたの投稿にいいねしました"
+        followed_me: 'あなたをフォローしました'
+        commented_to_tweet: 'あなたの投稿にコメントしました'
