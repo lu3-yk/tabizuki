@@ -2,6 +2,11 @@
   <div class= "row justify-content-center">
     <div class="col-lg-4">
       <div class="mb-5">
+        <% if current_user.activities.unread.exists? %>
+          <%= link_to user_activities_path(current_user.id),class: 'text-dark' do %>
+            未読通知あり<i class="fas fa-bell bell"></i><br>
+          <% end %>
+        <% end %>
         <%= link_to user_path(current_user.id) ,class: 'text-dark' do %>
          <%= image_tag current_user.get_profile_image(150,150), class: "user-icon" %>　マイページ
          <i class="far fa-user"></i>へ
