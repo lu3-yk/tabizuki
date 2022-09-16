@@ -105,7 +105,7 @@ class Public::TweetsController < ApplicationController
      @prefectures = Prefecture.where("id > 7") # 北海道～沖縄
      @prefecture = Prefecture.find_by(id: params[:id])
   end
-  
+
   def set_search
     @search = Tweet.ransack(params[:q])
     @search_tweet = @search.result.page(params[:page]).order(created_at: :desc) if params[:q]
