@@ -9,7 +9,7 @@ class Tweet < ApplicationRecord
   # バリデーション
   validates :image,         presence: true
   validates :title,         presence: true, length: { maximum: 30 }
-  validates :body,          presence: true, length: { maximum: 300 }
+  validates :body,          presence: true, length: { maximum: 255 }
 
   # Likesテーブル内に存在（exists?）するか
   def liked_by?(user)
