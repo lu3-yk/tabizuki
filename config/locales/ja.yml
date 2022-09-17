@@ -20,9 +20,9 @@ ja:
   enums:
     activity:
       action_type:
-        liked_to_tweet: "あなたの投稿にいいねしました"
-        followed_me: 'あなたをフォローしました'
-        commented_to_tweet: 'あなたの投稿にコメントしました'
+        liked_to_tweet: "あなたの投稿にいいね"
+        followed_me: 'あなたをフォロー'
+        commented_to_tweet: 'あなたの投稿にコメント'
   views:
     pagination:
       first: <i class="fas fa-angle-double-left"></i>

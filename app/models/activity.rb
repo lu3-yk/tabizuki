@@ -21,4 +21,5 @@ class Activity < ApplicationRecord
       tweet_path(self.subject.tweet)
     end
   end
+  
 end

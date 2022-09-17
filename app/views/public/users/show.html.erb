@@ -49,8 +49,8 @@
           <div class="col mt-4 text-center">
               <%= link_to user_activities_path(@user.id),class: 'text-dark' do %>
                 通知一覧&nbsp;<i class="fas fa-bell bell"></i>
-                <% if current_user.activities.unread.exists? %>
-                  未読<%= current_user.activities.unread.count %>件
+                <% if current_user.count_unread_activities > 0 %>
+                  未読<%= current_user.count_unread_activities %>件
                 <% end %>
               <% end %>
             </div>

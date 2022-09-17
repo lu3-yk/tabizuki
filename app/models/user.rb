@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :follower_user, through: :followed, source: :follower # 自分をフォローしている人
   has_many :activities, dependent: :destroy
 
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
@@ -49,4 +50,17 @@ class User < ApplicationRecord
     end
     profile_image.variant(resize_to_limit: [width, height])
   end
+
+  #未読の通知の件数取得
+  def count_unread_activities
+    unread_activities = self.activities.unread
+    count = 0
+    unread_activities.each do |activity|
+      if activity.subject.user.id != self.id
+        count += 1
+      end
+    end
+    count
+  end
+
 end
