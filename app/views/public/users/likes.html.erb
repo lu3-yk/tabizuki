@@ -7,11 +7,11 @@
   <div class="row mt-2">
     <div class="col d-flex align-content-around flex-wrap">
       <% @like_tweets.each do |tweet| %>
-        <div class="card-deck ml-1 mb-1" style="width:280px;">
+        <div class="card-deck col-lg-4 col-sm-12 col-md-12 mb-2">
           <div class="card shadow">
             <div class="text-center mt-2">
               <%= link_to tweet_path(tweet.id) do %>
-                <%= image_tag tweet.get_image(400,400),size: "240x240"  %>
+                <%= image_tag tweet.get_image(400,400),size: "250x240"  %>
               <% end %>
             </div>
             <div class="card-body">
@@ -29,7 +29,6 @@
                 <div id = "like_btn_<%= tweet.id %>">
                   <%= render "public/likes/likes", tweet: tweet %>
                 </div>&emsp;
-                <%#= link_to "#{tweet.comments.count} ", tweet_path(tweet.id) %>
                 <!--コメント機能-->
                 <div>
                   <%= link_to tweet_path(tweet.id) do %>
