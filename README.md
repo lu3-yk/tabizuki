@@ -48,7 +48,7 @@ tabizukiを利用することで楽しい旅行計画の役に立ったり、行
 <img width="842" alt="スクリーンショット 2022-09-10 17 07 26" src="https://user-images.githubusercontent.com/106656539/189474913-7c645148-8b58-4863-a211-6a69d7323e5b.png"><br>
 <br>
 ## 設計書
-・ER図![tabizuki drawio (4)](https://user-images.githubusercontent.com/106656539/190109333-cc58f35c-d69d-48c6-8fa6-f174e378f629.png)<br>
+・ER図![tabizuki drawio (5)](https://user-images.githubusercontent.com/106656539/190988974-c2deb7a2-2151-4dfe-a9c8-3dba1625ee5a.png<br>
 ・[テーブル定義書](https://docs.google.com/spreadsheets/d/1UC2u-qosewQDyae69rTYNQtA-eUjlb6oKlf5rIkzgLM/edit?usp=sharing)<br>
 ・[アプリケーション設計書](https://docs.google.com/spreadsheets/d/12lGrOPbHnduELhG2S6ZJWSPSJCTwpMCFo0Ypr5izPZM/edit?usp=sharing)<br>
 ・AWS構成図![AWS構成図 drawio](https://user-images.githubusercontent.com/106656539/189475361-8c47b739-7d98-47c8-952a-8a67e8b66157.png)
