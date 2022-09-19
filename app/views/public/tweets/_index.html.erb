@@ -46,10 +46,10 @@
               <div class="row">
                 <div class="col-8 h4">
                   &nbsp;<br>
-                  <%= link_to  "詳細",tweet_path(tweet.id),class: "btn btn-outline-info btn-sm" %>&emsp;
+                  <%= link_to  "詳細",tweet_path(tweet.id),class: "btn btn-outline-info btn-sm mt-1" %>&nbsp;
                   <% if tweet.user == current_user %>
-                    <%= link_to "編集", edit_tweet_path(tweet), class: "btn btn-outline-success btn-sm" %>&emsp;
-                    <%= link_to "削除", tweet_path(tweet), method: :delete,data: { confirm: '削除しますか？' }, class: "btn btn-outline-danger btn-sm" %>
+                    <%= link_to "編集", edit_tweet_path(tweet), class: "btn btn-outline-success btn-sm mt-1" %>&nbsp;
+                    <%= link_to "削除", tweet_path(tweet), method: :delete,data: { confirm: '削除しますか？' }, class: "btn btn-outline-danger btn-sm mt-1" %>
                   <% end %>
                 </div>
                 <div class="col-4 btn">
