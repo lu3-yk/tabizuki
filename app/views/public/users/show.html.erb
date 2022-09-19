@@ -1,5 +1,5 @@
-<div class="container">
-  <div class="row">
+<div class="container" style="min-width: 360px;">
+  <div class="row mx-md-auto" >
     <div class="col-6 text-center">
       <!-- ユーザーの詳細 -->
       <table class="table table-borderless text-center mt-4", style="background-color: #f7f6fb">
@@ -44,11 +44,11 @@
     </div>
     <!--通知一覧-->
     <% if user_signed_in? && @user == current_user %>
-      <div class="col-5">
-        <div class="row mx-auto" style="width: 200px;">
+      <div class="col-6 col-md-6">
+        <div class="row mx-auto" style="width: 140px;">
           <div class="col mt-4 text-center">
               <%= link_to user_activities_path(@user.id),class: 'text-dark' do %>
-                通知一覧&nbsp;<i class="fas fa-bell bell"></i>
+                通知一覧&nbsp;<i class="fas fa-bell bell"></i><br>
                 <% if current_user.count_unread_activities > 0 %>
                   未読<%= current_user.count_unread_activities %>件
                 <% end %>
@@ -56,7 +56,7 @@
             </div>
           </div>
           <!--いいね一覧-->
-          <div class="row mx-auto" style="width: 200px;">
+          <div class="row mx-auto" style="width: 140px;">
             <div class="col mt-4 text-center">
               <%= link_to likes_user_path(@user),class: 'text-dark' do %>
                 いいね一覧&nbsp;<i class="fas fa-heart heart"></i>
@@ -88,15 +88,16 @@
       </div>
     </div>
       <!-- ユーザーの投稿一覧 -->
-    <div class="row mt-3 mx-auto">
+    <div class="row mt-3">
       <div class="col-lg-12 col-md-12 d-flex align-content-around flex-wrap">
         <% if @tweets.exists? %>
             <% @tweets.each do |tweet| %>
-              <div class="card-deck mb-1" style="width:285px;">
+            <div class="col-lg-3 col-sm-12 col-md-12">
+              <div class="card-deck mb-2">
                 <div class="card shadow">
                   <div class="text-center m-1">
                     <%= link_to tweet_path(tweet.id) do %>
-                      <%= image_tag tweet.get_image(400,400), size: "235x235" %>
+                      <%= image_tag tweet.get_image(400,400), size: "230x240" %>
                     <% end %>
                   </div>
                   <div class="card-body">
@@ -105,6 +106,7 @@
                       <%= link_to "詳細", tweet_path(tweet.id),class: "btn btn-outline-info btn-sm" %>
                   </div>
                 </div>
+              </div>
               </div>
             <% end %>
          <% else %>
