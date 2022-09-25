@@ -37,7 +37,7 @@
                   <%= comment.comment %>
                 </td>
                 <td style="width: 30%">
-                  <%= link_to "不適切な投稿を削除する", admin_comment_path(comment.id), method: :delete,data: { confirm: '削除しますか？' }, class: "text-danger delete-btn" %>
+                  <%= link_to "削除", admin_comment_path(comment.id), method: :delete,data: { confirm: '削除しますか？' }, class: "text-danger delete-btn" %>
                 </td>
               </tr>
             </table>
@@ -46,7 +46,7 @@
         <div class="col-5">
           <div style="text-align:right" class="p">
             投稿日<%= @tweet.created_at.strftime('%Y/%m/%d') %><br>
-            <%= link_to "削除", admin_tweet_path(@tweet), method: :delete,data: { confirm: '削除しますか？' },class: "btn btn-outline-danger btn-sm" %>
+            <%= link_to "不適切な投稿を削除する", admin_tweet_path(@tweet), method: :delete,data: { confirm: '削除しますか？' },class: "btn btn-outline-danger btn-sm" %>
           </div>
         </div>
       </div>
