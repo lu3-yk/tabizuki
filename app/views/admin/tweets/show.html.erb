@@ -37,7 +37,7 @@
                   <%= comment.comment %>
                 </td>
                 <td style="width: 30%">
-                  <%= link_to "削除", admin_comment_path(comment.id), method: :delete,data: { confirm: '削除しますか？' }, class: "text-danger delete-btn" %>
+                  <%= link_to "不適切な投稿を削除する", admin_comment_path(comment.id), method: :delete,data: { confirm: '削除しますか？' }, class: "text-danger delete-btn" %>
                 </td>
               </tr>
             </table>
