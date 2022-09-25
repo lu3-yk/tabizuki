@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="row">
+        <div class="col-2">
+          <%= link_to admin_user_path(@tweet.user.id) do %>
+            <%= image_tag @tweet.user.get_profile_image(150,150), class: "user-icon" %><br>
+            <%= @tweet.user.name %>
+          <% end %>
+        </div>
+        <div class="col-5">
+          <%= image_tag @tweet.get_image(400, 400),style: "width: 100%;" %>
+        </div>
+        <div class="col-5">
+          <div>
+            <h2 class="h2"><%= @tweet.prefecture.name %></h2>
+            <h4 class="h4"><%= @tweet.title %></h4>
+            <p class="p"><%= @tweet.body %></p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-2">
+        </div>
+        <div class="col-5 mt-2">
+          <% @tweet.comments.each do |comment| %>
+            <table class="table shadow">
+              <tr>
+                <td style="width: 20%">
+                  <%= link_to admin_user_path(comment.user.id) do %>
+                    <%= image_tag comment.user.get_profile_image(150,150), class: "user-icon" %><br>
+                    <%= comment.user.name %><br>
+                  <% end %>
+                    <%= comment.created_at.strftime('%Y/%m/%d %H:%M') %>
+                </td>
+                <td style="width: 50%">
+                  <%= comment.comment %>
+                </td>
+                <td style="width: 30%">
+                  <%= link_to "削除", tweet_comment_path(comment.tweet, comment), method: :delete,data: { confirm: '削除しますか？' }, class: "text-danger delete-btn" %>
+                </td>
+              </tr>
+            </table>
+          <% end %>
+        </div>
+        <div class="col-5">
+          <div style="text-align:right" class="p">
+            投稿日<%= @tweet.created_at.strftime('%Y/%m/%d') %><br>
+            <%= link_to "削除", admin_tweet_path(@tweet), method: :delete,data: { confirm: '削除しますか？' },class: "btn btn-outline-danger btn-sm" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

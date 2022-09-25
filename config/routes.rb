@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   # ログイン関係
   # URL /user/sign_in ...
   devise_for :user, skip: [:passwords], controllers: {
@@ -41,6 +42,7 @@ Rails.application.routes.draw do
 
   # 管理者関係
   namespace :admin do
+    resources :tweets
     resources :users do
       member do
         get :unsubscribe
