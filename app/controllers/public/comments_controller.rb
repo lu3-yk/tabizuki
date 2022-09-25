@@ -12,6 +12,7 @@ class Public::CommentsController < ApplicationController
     Comment.find(params[:id]).destroy
     @tweet = Tweet.find(params[:tweet_id])
     @comment = Comment.new
+    
   end
 
   private

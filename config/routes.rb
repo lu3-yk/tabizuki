@@ -43,6 +43,7 @@ Rails.application.routes.draw do
   # 管理者関係
   namespace :admin do
     resources :tweets
+    resources :comments, only: :destroy
     resources :users do
       member do
         get :unsubscribe
